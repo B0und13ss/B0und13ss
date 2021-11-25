@@ -1,0 +1,4 @@
+- 👋 Hi, I’m @Ian0706
+- 👀 I’m interested in developing addons.
+- 🌱 I’m currently learning python.
+- 📫 How to reach me idougherty0706@gmail.com 
