@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @Ian0706
-- 👀 I’m interested in developing addons.
-- 🌱 I’m currently learning python.
+- 👋 Hi, I’m Ian Dougherty.
+- 👀 I’m interested in developing anything.
+- 🌱 I’m well versed in python and I am learning C++.
 - 📫 How to reach me idougherty0706@gmail.com 
