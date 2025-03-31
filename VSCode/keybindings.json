@@ -175,4 +175,42 @@
     "key": "ctrl+e",
     "command": "-workbench.action.quickOpen"
   },
+  {
+    "key": "ctrl+9",
+    "command": "workbench.action.terminal.focus"
+  },
+  {
+    "key": "ctrl+down",
+    "command": "-workbench.action.terminal.focus",
+    "when": "accessibilityModeEnabled && accessibleViewOnLastLine && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal' || accessibilityModeEnabled && accessibleViewOnLastLine && terminalProcessSupported && accessibleViewCurrentProviderId == 'terminal'"
+  },
+  {
+    "key": "ctrl+9",
+    "command": "-workbench.action.lastEditorInGroup"
+  },
+  {
+    "key": "f5",
+    "command": "-workbench.action.debug.continue",
+    "when": "debugState == 'stopped'"
+  },
+  {
+    "key": "f5",
+    "command": "-workbench.action.debug.start",
+    "when": "debuggersAvailable && debugState == 'inactive'"
+  },
+  {
+    "key": "f5",
+    "command": "-debug.openView",
+    "when": "!debuggersAvailable"
+  },
+  {
+    "key": "f5",
+    "command": "C_Cpp_Runner.buildFolder",
+    "when": "C_Cpp_Runner:activatedExtension"
+  },
+  {
+    "key": "ctrl+k b",
+    "command": "-C_Cpp_Runner.buildFolder",
+    "when": "C_Cpp_Runner:activatedExtension"
+  },
 ]
