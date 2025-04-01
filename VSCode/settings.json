@@ -58,6 +58,7 @@
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.focusAfterRun": "terminal",
   "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.defaultLocation": "editor",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.fontSize": 18,
