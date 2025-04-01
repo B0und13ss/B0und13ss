@@ -1,0 +1,14 @@
+$PSStyle.FileInfo.Directory = "`e[38;2;137;180;250m"
+Set-Alias -Name touch -Value "New-Item"
+cls
+
+function prompt {
+    $Location = (Get-Location).Path
+    $HomeDir = echo $HOME
+    if ($Location -eq $HomeDir) {
+        $Location = "~"
+    }
+
+    Write-Host -Object "`e[38;2;166;227;161mian@desktop`e[38;2;205;214;244m:`e[38;2;137;180;250m$Location`n`e[38;2;205;214;244m>" -NoNewLine -ForegroundColor White
+    Return ' '
+}
