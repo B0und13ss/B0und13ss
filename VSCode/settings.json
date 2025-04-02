@@ -155,5 +155,6 @@
   "[c]": {
     "editor.defaultFormatter": "ms-vscode.cpptools"
   },
+  "terminal.integrated.tabs.enabled": false,
   // ! VSCode Vim
 }
