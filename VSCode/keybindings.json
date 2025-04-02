@@ -95,6 +95,26 @@
     "key": "alt+o n",
     "command": "workbench.action.files.newUntitledFile"
   },
+  // ! Terminals in editor group
+  {
+    "key": "alt+t p",
+    "command": "workbench.action.terminal.splitActiveTab",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "alt j",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "alt k",
+    "command": "workbench.action.terminal.focusPreviousPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+9",
+    "command": "workbench.action.focusPanel"
+  },
   // ! Quick Open Navigation
   {
     "key": "ctrl+n",
@@ -115,22 +135,6 @@
     "key": "ctrl+p",
     "command": "quickInput.previous",
     "when": "inQuickInput"
-  },
-  // ! Terminal Navigation
-  {
-    "key": "ctrl+shift+q",
-    "command": "workbench.action.terminal.kill",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "ctrl+p",
-    "command": "workbench.action.terminal.focusNext",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "ctrl+n",
-    "command": "workbench.action.terminal.focusPrevious",
-    "when": "terminalFocus"
   },
   // ! Swap Tabs that arent files using the same keybinds that files use
   {
@@ -174,10 +178,6 @@
   {
     "key": "ctrl+e",
     "command": "-workbench.action.quickOpen"
-  },
-  {
-    "key": "ctrl+9",
-    "command": "workbench.action.terminal.focus"
   },
   {
     "key": "ctrl+down",
