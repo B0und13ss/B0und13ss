@@ -159,6 +159,8 @@
       "panel.border": "#3c3836",
       "statusBar.border": "#3c3836",
       "sideBar.border": "#3c3836",
+      "statusBar.debuggingBackground": "#1d2021",
+      "statusBar.debuggingForeground": "#ebdbb2",
       "statusBarItem.remoteBackground":"#1d2021",
     }
   },
