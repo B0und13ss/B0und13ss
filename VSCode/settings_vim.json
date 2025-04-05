@@ -158,6 +158,7 @@
       "titleBar.border": "#3c3836",
       "panel.border": "#3c3836",
       "statusBar.border": "#3c3836",
+      "statusBar.noFolderBorder": "#3c3836",
       "sideBar.border": "#3c3836",
       "statusBar.debuggingBackground": "#1d2021",
       "statusBar.debuggingForeground": "#ebdbb2",
@@ -173,8 +174,8 @@
   "vim.changeWordIncludesWhitespace": true,
   "vim.smartRelativeLine": true,
   "vim.highlightedyank.enable": true,
-  "vim.highlightedyank.color": "rgb(174, 175, 173)",
-  "vim.highlightedyank.textColor": "rgb(31, 31, 31)",
+  "vim.highlightedyank.color": "rgb(235, 219, 178)",
+  "vim.highlightedyank.textColor": "rgb(29, 32, 33)",
   "vim.highlightedyank.duration": 100,
   "vim.normalModeKeyBindingsNonRecursive": [
     {"before": ["<Escape>"], "commands": [":noh"]},
