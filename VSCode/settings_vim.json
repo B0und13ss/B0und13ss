@@ -52,14 +52,13 @@
   "git.openRepositoryInParentFolders": "never",
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.port": 8080,
-  "workbench.panel.defaultLocation": "right",
   "vsicons.presets.hideExplorerArrows": true,
   "security.workspace.trust.untrustedFiles": "open",
+  "security.allowedUNCHosts": ["wsl.localhost"],
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.tabs.enabled": false,
   "terminal.integrated.focusAfterRun": "terminal",
   "terminal.integrated.scrollback": 10000,
-  "terminal.integrated.defaultLocation": "editor",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.fontSize": 18,
@@ -74,6 +73,8 @@
   "window.newWindowProfile": "Default",
   "window.restoreWindows": "none",
   "window.title": "NeoCode",
+  "workbench.colorTheme": "Vim Dark Hard",
+  "workbench.panel.defaultLocation": "right",
   "workbench.activityBar.location": "hidden",
   "workbench.editor.editorActionsLocation": "hidden",
   "workbench.editor.empty.hint": "hidden",
@@ -102,6 +103,9 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
   },
   // ! Android Emulator
   "emulator.hasEditorTitleIcon": false,
@@ -139,6 +143,7 @@
       "statusBar.debuggingForeground": "#11111b"
     },
     "[Default Dark Modern]": {
+      "titleBar.border": "#2b2b2b00",
       "titleBar.inactiveBackground": "#181818",
       "titleBar.inactiveForeground": "#cccccc",
       "tab.activeBorderTop": "#1f1f1f",
@@ -148,11 +153,14 @@
       "statusBar.debuggingForeground": "#cccccc",
       "statusBarItem.remoteBackground": "#181818",
       "statusBarItem.remoteForeground": "#cccccc"
+    },
+    "[Vim Dark Hard]": {
+      "titleBar.border": "#3c3836",
+      "panel.border": "#3c3836",
+      "statusBar.border": "#3c3836",
+      "sideBar.border": "#3c3836",
+      "statusBarItem.remoteBackground":"#1d2021",
     }
-  },
-  "security.allowedUNCHosts": ["wsl.localhost"],
-  "[c]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
   },
   // ! VSCode Vim
   "vim.disableExtension": false,
@@ -230,7 +238,7 @@
     {
       "before": ["leader", "r", "e"],
       "commands": ["emulator.start"]
-    },
+    }
   ],
   "vim.insertModeKeyBindings": [
     {"before": ["<C-h>"], "commands": ["cursorLeft"]},
@@ -247,5 +255,5 @@
       "before": ["leader", "c", "c"],
       "commands": ["editor.action.commentLine"]
     }
-  ]
+  ],
 }
