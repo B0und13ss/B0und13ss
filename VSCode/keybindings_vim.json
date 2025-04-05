@@ -2,6 +2,15 @@
 [
   // ! Sidebar Navigation
   {
+    "key": "ctrl+e",
+    "command": "editor.action.inlineSuggest.hide",
+    "when": "inlineSuggestionVisible"
+  },
+  {
+    "key": "alt+0",
+    "command": "workbench.action.focusSideBar"
+  },
+  {
     "key": "j",
     "command": "list.focusDown",
     "when": "listFocus && !inputFocus && !treestickyScrollFocused"
@@ -76,7 +85,7 @@
   },
   // ! Terminals navigation
   {
-    "key": "ctrl+9",
+    "key": "alt+9",
     "command": "workbench.action.focusPanel"
   },
   // ! Quick Open Navigation
@@ -113,15 +122,14 @@
   },
   {
     "key": "ctrl+e",
-    "command": "editor.action.inlineSuggest.hide",
-    "when": "inlineSuggestionVisible"
-  },
-  {
-    "key": "ctrl+e",
     "command": "hideSuggestWidget",
     "when": "suggestWidgetVisible"
   },
   // ! Swap Tabs that arent files using the same keybinds that files use
+  {
+    "key": "alt+1",
+    "command": "workbench.action.focusFirstEditorGroup"
+  },
   {
     "key": "shift+l",
     "command": "workbench.action.nextEditor",
@@ -239,4 +247,52 @@
     "key": "ctrl+pageup",
     "command": "-workbench.action.previousEditor"
   },
+  {
+    "key": "ctrl+1",
+    "command": "-workbench.action.focusFirstEditorGroup"
+  },
+  {
+    "key": "alt+1",
+    "command": "-workbench.action.openEditorAtIndex1"
+  },
+  {
+    "key": "alt+2",
+    "command": "-workbench.action.openEditorAtIndex2"
+  },
+  {
+    "key": "alt+3",
+    "command": "-workbench.action.openEditorAtIndex3"
+  },
+  {
+    "key": "alt+4",
+    "command": "-workbench.action.openEditorAtIndex4"
+  },
+  {
+    "key": "alt+5",
+    "command": "-workbench.action.openEditorAtIndex5"
+  },
+  {
+    "key": "alt+6",
+    "command": "-workbench.action.openEditorAtIndex6"
+  },
+  {
+    "key": "alt+7",
+    "command": "-workbench.action.openEditorAtIndex7"
+  },
+  {
+    "key": "alt+8",
+    "command": "-workbench.action.openEditorAtIndex8"
+  },
+  {
+    "key": "alt+9",
+    "command": "-workbench.action.openEditorAtIndex9"
+  },
+  {
+    "key": "alt+0",
+    "command": "-workbench.action.lastEditorInGroup"
+  },
+  {
+    "key": "ctrl+0",
+    "command": "-workbench.action.focusSideBar"
+  }
 ]
