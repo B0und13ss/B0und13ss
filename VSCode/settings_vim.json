@@ -1,107 +1,177 @@
 {
-  // ! VsCode Appearance
-  "window.title": "NeoCode",
-  "window.menuBarVisibility": "hidden",
-  "window.commandCenter": false,
-  "window.density.editorTabHeight": "compact",
-  "window.restoreWindows": "none",
-  "workbench.colorTheme": "Rosé Pine",
-  "workbench.iconTheme": "eq-material-theme-icons-darker",
-  "workbench.editor.showTabs": "multiple",
-  "workbench.layoutControl.enabled": false,
-  "workbench.sideBar.location": "right",
-  "workbench.tips.enabled": false,
-  "workbench.activityBar.location": "default",
-  "editor.fontFamily": "CaskaydiaMono NFM",
   "breadcrumbs.enabled": false,
+  "chat.commandCenter.enabled": false,
+  "code-runner.runInTerminal": true,
+  "code-runner.clearPreviousOutput": true,
+  "code-runner.preserveFocus": false,
+  "code-runner.showExecutionMessage": false,
+  "code-runner.enableAppInsights": false,
+  "code-runner.executorMap": {
+    "javascript": "node",
+    "typescript": "ts-node",
+    "python": "python3"
+  },
+  "C_Cpp_Runner.cStandard": "gnu23",
+  "C_Cpp_Runner.cppStandard": "gnu++23",
+  "debug.showInlineBreakpointCandidates": false,
+  "editor.codeLens": false,
+  "editor.cursorBlinking": "blink",
+  "editor.cursorStyle": "line-thin",
+  "editor.cursorSurroundingLines": 10,
+  "editor.fontFamily": "JetBrainsMonoNL NFM SemiBold", // "CaskaydiaMono NFM Light",
   "editor.fontLigatures": false,
-  "editor.minimap.enabled": false,
-  "editor.lineNumbers": "relative",
-  "editor.scrollbar.vertical": "hidden",
-  "editor.scrollbar.horizontal": "hidden",
-  "editor.scrollbar.verticalScrollbarSize": 0,
-  "editor.lineHeight": 1.2,
-  "editor.fontSize": 15,
+  "editor.fontSize": 18,
+  "editor.guides.indentation": false,
   "editor.lightbulb.enabled": "off",
-  "editor.stickyScroll.enabled": false,
-  "terminal.integrated.gpuAcceleration": "off",
-  "terminal.integrated.fontSize": 15,
-  // ! VsCode Functionality
-  "terminal.integrated.tabStopWidth": 2,
-  "security.workspace.trust.untrustedFiles": "open",
-  "workbench.editor.enablePreview": true,
-  "editor.suggest.insertMode": "replace",
-  "editor.tabSize": 2,
+  "editor.lineHeight": 1.625,
+  "editor.lineNumbers": "on",
   "editor.linkedEditing": true,
-  "extensions.ignoreRecommendations": true,
-  "git.openRepositoryInParentFolders": "never",
-  "git.confirmSync": false,
-  "git.autofetch": true,
-  "workbench.settings.editor": "json",
-	"workbench.panel.opensMaximized": "always",
-  "workbench.startupEditor": "none",
-  "files.dialog.defaultPath": "C:\\Users\\ian\\Development\\",
-  "window.customMenuBarAltFocus": false,
+  "editor.minimap.enabled": false,
+  "editor.overviewRulerBorder": false,
+  "editor.renderLineHighlight": "none",
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.horizontalScrollbarSize": 0,
+  "editor.scrollbar.vertical": "hidden",
+  "editor.scrollbar.verticalScrollbarSize": 0,
+  "editor.showFoldingControls": "never",
+  "editor.stickyScroll.enabled": false,
+  "editor.suggest.insertMode": "insert",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "off",
+  "explorer.compactFolders": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
+  "extensions.ignoreRecommendations": true,
+  "files.dialog.defaultPath": "C:\\Users\\ian\\Code\\",
+  "files.insertFinalNewline": true,
+  "files.simpleDialog.enable": true,
+  "files.trimTrailingWhitespace": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "never",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.port": 8080,
+  "workbench.panel.defaultLocation": "right",
+  "vsicons.presets.hideExplorerArrows": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.tabs.enabled": false,
+  "terminal.integrated.focusAfterRun": "terminal",
+  "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.defaultLocation": "editor",
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "terminal.integrated.fontSize": 18,
+  "terminal.integrated.gpuAcceleration": "off",
+  "terminal.integrated.tabStopWidth": 2,
+  "vsicons.dontShowNewVersionMessage": true,
+  "window.commandCenter": false,
+  "window.customMenuBarAltFocus": false,
+  "window.density.editorTabHeight": "compact",
+  "window.enableMenuBarMnemonics": false,
+  "window.menuBarVisibility": "hidden",
+  "window.newWindowProfile": "Default",
+  "window.restoreWindows": "none",
+  "window.title": "NeoCode",
+  "workbench.activityBar.location": "hidden",
+  "workbench.editor.editorActionsLocation": "hidden",
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.editor.enablePreview": true,
+  "workbench.editor.showTabs": "multiple",
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.layoutControl.enabled": false,
+  "workbench.panel.opensMaximized": "preserve",
+  "workbench.productIconTheme": "fluent-icons",
+  "workbench.settings.editor": "json",
+  "workbench.sideBar.location": "right",
+  "workbench.startupEditor": "none",
+  "workbench.tips.enabled": false,
+  "workbench.tree.enableStickyScroll": false,
+  "workbench.tree.indent": 24,
+  "workbench.tree.renderIndentGuides": "none",
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
   // ! Prettier
   "prettier.printWidth": 180,
+  "prettier.tabWidth": 2,
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.bracketSpacing": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   // ! Android Emulator
   "emulator.hasEditorTitleIcon": false,
-  "emulator.emulatorPath": "C:\\Users\\ian\\AppData\\Local\\Android\\Sdk\\emulator",
-  "emulator.emulatorPathWindows": "C:\\Users\\ian\\AppData\\Local\\Android\\Sdk\\emulator",
-  // ! VSCodeVim Settings
+  "emulator.emulatorPath": "C:\\android-sdk\\emulator",
+  "emulator.emulatorPathWindows": "C:\\android-sdk\\emulator",
+  // ! Custom Appearances
+  "workbench.colorCustomizations": {
+    "scrollbar.shadow": "#00000000",
+    "[Monokai Pro]": {
+      "titleBar.border": "#00000000",
+      "sideBar.border": "#00000000",
+      "statusBar.border": "#00000000",
+      "editorGroup.border": "#00000000",
+      "panel.background": "#2d2a2e",
+      "terminal.background": "#2d2a2e"
+    },
+    "[Catppuccin Mocha]": {
+      "sideBar.background": "#11111b",
+      "sideBarTitle.background": "#11111b",
+      "sideBarSectionHeader.background": "#11111b",
+      "statusBar.border": "#1e1e2e",
+      "tab.activeBorderTop": "#1e1e2e",
+      "tab.border": "#00000000",
+      "tab.inactiveBackground": "#11111b",
+      "editorGroup.border": "#1e1e2e",
+      "titleBar.inactiveBackground": "#11111b",
+      "panel.background": "#11111b",
+      "statusBarItem.remoteBackground": "#f5c2e7",
+      "statusBar.background": "#f5c2e7",
+      "statusBar.noFolderBackground": "#f5c2e7",
+      "statusBar.debuggingBackground": "#f5c2e7",
+      "statusBarItem.remoteForeground": "#11111b",
+      "statusBar.foreground": "#11111b",
+      "statusBar.noFolderForeground": "#11111b",
+      "statusBar.debuggingForeground": "#11111b"
+    },
+    "[Default Dark Modern]": {
+      "titleBar.inactiveBackground": "#181818",
+      "titleBar.inactiveForeground": "#cccccc",
+      "tab.activeBorderTop": "#1f1f1f",
+      "statusBar.noFolderBackground": "#181818",
+      "statusBar.noFolderForeground": "#cccccc",
+      "statusBar.debuggingBackground": "#181818",
+      "statusBar.debuggingForeground": "#cccccc",
+      "statusBarItem.remoteBackground": "#181818",
+      "statusBarItem.remoteForeground": "#cccccc"
+    }
+  },
+  "security.allowedUNCHosts": ["wsl.localhost"],
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  // ! VSCode Vim
+  "vim.disableExtension": false,
   "vim.leader": "<Space>",
   "vim.useSystemClipboard": true,
   "vim.hlsearch": true,
   "vim.useCtrlKeys": true,
-  // ! VsCodeVim Appearance Settings
-  "editor.cursorSurroundingLines": 10,
+  "vim.changeWordIncludesWhitespace": true,
   "vim.smartRelativeLine": true,
-  "vim.statusBarColorControl": false,
-  "vim.statusBarColors.normal": ["#ebbcba", "#191724"],
-  "vim.statusBarColors.insert": ["#9ccfd8", "#191724"],
-  "vim.statusBarColors.commandlineinprogress": ["#31748f", "#191724"],
-  "vim.statusBarColors.searchinprogressmode": ["#31748f", "#191724"],
-  "vim.statusBarColors.visual": ["#c4a7e7", "#191724"],
-  "vim.statusBarColors.visualline": ["#c4a7e7", "#191724"],
-  "vim.statusBarColors.visualblock": ["#c4a7e7", "#191724"],
-  "vim.statusBarColors.replace": ["#eb6f92", "#191724"],
-  "workbench.colorCustomizations": {
-    "sideBar.border": "#26233a",
-    "activityBar.border": "#26233a",
-    "titleBar.border": "#26233a",
-    "statusBar.border": "#26233a",
-    "editorGroup.border": "#26233a",
-    "terminal.background": "#191724",
-    "titleBar.inactiveBackground": "#191724",
-    "panel.background": "#191724",
-    "scrollbar.shadow": "#00000000",
-    "statusBar.background": "#191724",
-    "statusBar.noFolderBackground": "#191724",
-    "statusBar.debuggingBackground": "#191724",
-    "statusBarItem.remoteBackground": "#191724",
-    "statusBar.foreground": "#908caa",
-    "statusBar.noFolderForeground": "#908caa",
-    "statusBar.debuggingForeground": "#908caa",
-    "statusBarItem.remoteForeground": "#908caa",
-  },
   "vim.highlightedyank.enable": true,
-  "vim.highlightedyank.color": "rgb(246, 193, 119)",
-  "vim.highlightedyank.textColor": "rgb(25, 23, 36)",
-  "vim.highlightedyank.duration": 150,
-  // ! Vim Keybinds
+  "vim.highlightedyank.color": "rgb(174, 175, 173)",
+  "vim.highlightedyank.textColor": "rgb(31, 31, 31)",
+  "vim.highlightedyank.duration": 100,
   "vim.normalModeKeyBindingsNonRecursive": [
-    { "before": ["<Escape>"], "commands": [":noh"] },
-    { "before": ["leader", "w"], "commands": [":w!"] },
-    { "before": ["leader", "q"], "commands": [":q!"] },
-    { "before": ["leader", "x"], "commands": [":x!"] },
-    { "before": ["<S-h>"], "commands": [":bprevious"] },
-    { "before": ["<S-l>"], "commands": [":bnext"] },
+    {"before": ["<Escape>"], "commands": [":noh"]},
+    {"before": ["leader", "w"], "commands": [":w!"]},
+    {"before": ["leader", "x"], "commands": [":x!"]},
+    {"before": ["<S-h>"], "commands": [":bprevious"]},
+    {"before": ["<S-l>"], "commands": [":bnext"]},
     {
       "before": ["leader", "h"],
       "commands": ["workbench.action.focusLeftGroup"]
@@ -122,35 +192,17 @@
       "before": ["leader", "/"],
       "commands": ["fuzzySearch.activeTextEditor"]
     },
-    {
-      "before": ["leader", "D"],
-      "commands": ["editor.action.goToTypeDefinition"]
-    },
-    // ! c
-    {
-      "before": ["leader", "c", "a"],
-      "commands": ["editor.action.quickFix"]
-    },
-    {
-      "before": ["leader", "c", "c"],
-      "commands": ["editor.action.commentLine"]
-    },
-    // ! d
-    {
-      "before": ["leader", "d", "s"],
-      "commands": ["workbench.action.gotoSymbol"]
-    },
     // ! f
-    {
-      "before": ["leader", "f", "t"],
-      "commands": ["workbench.action.files.openFolder"]
-    },
     {
       "before": ["leader", "f", "r"],
       "commands": ["workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"]
     },
-    { "before": ["leader", "f", "f"], "commands": ["editor.action.formatDocument"] },
+    {"before": ["leader", "f", "f"], "commands": ["editor.action.formatDocument"]},
     // ! g
+    {
+      "before": ["leader", "g", "s"],
+      "commands": ["workbench.action.gotoSymbol"]
+    },
     {
       "before": ["leader", "g", "d"],
       "commands": ["editor.action.revealDefinition"]
@@ -163,13 +215,9 @@
       "before": ["leader", "g", "I"],
       "commands": ["editor.action.goToImplimentation"]
     },
-    {
-      "before": ["leader", "g", "D"],
-      "commands": ["editor.action.revealDeclaration"]
-    },
     // ! p
-    { "before": ["leader", "p", "v"], "commands": [":vsplit"] },
-    { "before": ["leader", "p", "h"], "commands": [":split"] },
+    {"before": ["leader", "p", "v"], "commands": [":vsplit"]},
+    {"before": ["leader", "p", "h"], "commands": [":split"]},
     // ! r
     {
       "before": ["leader", "r", "s"],
@@ -183,27 +231,21 @@
       "before": ["leader", "r", "e"],
       "commands": ["emulator.start"]
     },
-    // ! s
-    {
-      "before": ["leader", "s", "p"],
-      "commands": ["workbench.action.showCommands"]
-    }
   ],
   "vim.insertModeKeyBindings": [
-    { "before": ["<C-h>"], "commands": ["cursorLeft"] },
-    { "before": ["<C-l>"], "commands": ["cursorRight"] },
-    { "before": ["<C-j>"], "commands": ["cursorDown"] },
-    { "before": ["<C-k>"], "commands": ["cursorUp"] }
+    {"before": ["<C-h>"], "commands": ["cursorLeft"]},
+    {"before": ["<C-l>"], "commands": ["cursorRight"]},
+    {"before": ["<C-j>"], "commands": ["cursorDown"]},
+    {"before": ["<C-k>"], "commands": ["cursorUp"]}
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
-    { "before": ["<"], "commands": ["editor.action.outdentLines"] },
-    { "before": [">"], "commands": ["editor.action.indentLines"] },
-    { "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
-    { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] },
+    {"before": ["<"], "commands": ["editor.action.outdentLines"]},
+    {"before": [">"], "commands": ["editor.action.indentLines"]},
+    {"before": ["J"], "commands": ["editor.action.moveLinesDownAction"]},
+    {"before": ["K"], "commands": ["editor.action.moveLinesUpAction"]},
     {
       "before": ["leader", "c", "c"],
       "commands": ["editor.action.commentLine"]
     }
-  ],
-  "workbench.productIconTheme": "fluent-icons",
+  ]
 }
