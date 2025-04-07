@@ -1,0 +1,859 @@
+Splunk 9.0 Cluster Administration Lab Solutions - server.conf & other conf files examples  
+
+============================================================================================================
+= LAB 1: Configure Splunk License Manager                                                                   =
+============================================================================================================
+--------------------------------------------------------------------------
+Check and compare: ~/dserver/etc/system/local/server.conf
+--------------------------------------------------------------------------
+[general]
+serverName = dserver
+pass4SymmKey = {splunk_hash}
+...
+[lmpool:auto_generated_pool_enterprise]
+description = auto_generated_pool_enterprise
+quota = MAX
+slaves = *
+stack_id = enterprise
+
+[license]
+active_group = Enterprise
+
+
+
+
+============================================================================================================
+= LAB 2: Enable Single-site Indexer Cluster                                                                =
+============================================================================================================
+--------------------------------------------------------------------------
+Check and compare on CMANAGER: ~/cmanager/etc/system/local/server.conf
+--------------------------------------------------------------------------
+...
+[general]
+serverName = cmanager
+pass4SymmKey = {splunk_hash}
+...
+[license]
+manager_uri = https://10.0.x.3:8189
+
+[clustering]
+mode = manager
+pass4SymmKey = {hashed_idxcluster}
+replication_factor = 2
+
+--------------------------------------------------------------------------
+Check and compare on IDX1: ~/idx1/etc/system/local/server.conf
+--------------------------------------------------------------------------
+[general]
+serverName = idx1
+pass4SymmKey = {splunk_hash}
+...
+[license]
+manager_uri = https://10.0.x.3:8189
+
+[replication_port://9100]
+
+[clustering]
+manager_uri = https://10.0.x.3:8089
+mode = slave
+pass4SymmKey = {hashed_idxcluster}
+
+--------------------------------------------------------------------------
+Check and compare on IDX1: ~/idx1/etc/apps/search/local/inputs.conf
+--------------------------------------------------------------------------
+[splunktcp://9197]
+connection_host = ip
+
+--------------------------------------------------------------------------
+Check and compare on IDX2: ~/idx2/etc/system/local/server.conf
+--------------------------------------------------------------------------
+...
+[general]
+serverName = idx2
+pass4SymmKey = {splunk_hash}
+...
+[license]
+manager_uri = https://10.0.x.3:8189
+
+[replication_port://9200]
+
+[clustering]
+manager_uri = https://10.0.x.3:8089
+mode = slave
+pass4SymmKey = {hashed_idxcluster}
+
+--------------------------------------------------------------------------
+Check and compare on IDX2: ~/idx2/etc/apps/search/local/inputs.conf
+--------------------------------------------------------------------------
+[splunktcp://9297]
+connection_host = ip
+
+--------------------------------------------------------------------------
+Check and compare on IDX3: ~/idx3/etc/system/local/server.conf
+--------------------------------------------------------------------------
+...
+[general]
+serverName = idx3
+pass4SymmKey = {splunk_hash}
+
+[license]
+manager_uri = https://10.0.x.3:8189
+
+[replication_port://9300]
+
+[clustering]
+manager_uri = https://10.0.x.3:8089
+mode = slave
+pass4SymmKey = {hashed_idxcluster}
+
+--------------------------------------------------------------------------
+Check and compare on IDX3: ~/idx3/etc/apps/search/local/inputs.conf
+--------------------------------------------------------------------------
+[splunktcp://9397]
+connection_host = ip
+
+--------------------------------------------------------------------------
+Check and compare on SH1: ~/sh1/etc/system/local/server.conf
+--------------------------------------------------------------------------
+[general]
+serverName = sh1
+pass4SymmKey = {splunk_hash}
+...
+[license]
+manager_uri = https://10.0.x.3:8189
+
+[clustering]
+manager_uri = https://10.0.x.3:8089
+mode = searchhead
+pass4SymmKey = {hashed_idxcluster}
+
+
+
+
+============================================================================================================
+= LAB 3: Migrate Single-site Cluster to Multisite Cluster                                                  =
+============================================================================================================
+--------------------------------------------------------------------------
+Check and compare on CMANAGER: ~/cmanager/etc/system/local/server.conf
+--------------------------------------------------------------------------
+...
+[general]
+serverName = cmanager
+pass4SymmKey = {splunk_hash}
+site = site1
+...
+[license]
+manager_uri = https://10.0.x.3:8189
+
+[clustering]
+mode = manager
+pass4SymmKey = {hashed_idxcluster}
+replication_factor = 1
+search_factor = 1
+available_sites = site1,site2
+multisite = true
+site_replication_factor = origin:1,total:2
+site_search_factor = origin:1,total:2
+maintenance_mode = false
+
+--------------------------------------------------------------------------
+Check and compare on IDX1: ~/idx1/etc/system/local/server.conf
+--------------------------------------------------------------------------
+[general]
+serverName = idx1
+pass4SymmKey = {splunk_hash}
+site = site1
+...
+[license]
+manager_uri = https://10.0.x.3:8189
+
+[replication_port://9100]
+
+[clustering]
+manager_uri = https://10.0.x.3:8089
+mode = slave
+pass4SymmKey = {hashed_idxcluster}
+
+--------------------------------------------------------------------------
+NOTE: No changes to the inputs.conf of all indexer peers.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+Check and compare on IDX2: ~/idx2/etc/system/local/server.conf
+--------------------------------------------------------------------------
+...
+[general]
+serverName = idx2
+pass4SymmKey = {splunk_hash}
+site = site1
+...
+[license]
+manager_uri = https://10.0.x.3:8189
+
+[replication_port://9200]
+
+[clustering]
+manager_uri = https://10.0.x.3:8089
+mode = slave
+pass4SymmKey = {hashed_idxcluster}
+
+--------------------------------------------------------------------------
+Check and compare on IDX3: ~/idx3/etc/system/local/server.conf
+--------------------------------------------------------------------------
+...
+[general]
+serverName = idx3
+pass4SymmKey = {splunk_hash}
+site = site2
+...
+[license]
+manager_uri = https://10.0.x.3:8189
+
+[replication_port://9300]
+
+[clustering]
+manager_uri = https://10.0.x.3:8089
+mode = slave
+pass4SymmKey = {hashed_idxcluster}
+
+--------------------------------------------------------------------------
+Check and compare on IDX4: ~/idx4/etc/system/local/server.conf
+--------------------------------------------------------------------------
+...
+[general]
+serverName = idx4
+pass4SymmKey = {splunk_hash}
+site = site2
+...
+[license]
+manager_uri = https://10.0.x.3:8189
+
+[replication_port://9400]
+
+[clustering]
+manager_uri = https://10.0.x.3:8089
+mode = slave
+pass4SymmKey = {hashed_idxcluster}
+
+--------------------------------------------------------------------------
+Check and compare on IDX4: ~/idx4/etc/apps/search/local/inputs.conf
+--------------------------------------------------------------------------
+[splunktcp://9497]
+connection_host = ip
+
+
+
+--------------------------------------------------------------------------
+Check and compare on SH1: ~/sh1/etc/system/local/server.conf
+--------------------------------------------------------------------------
+...
+[general]
+serverName = sh1
+pass4SymmKey = {splunk_hash}
+...
+[license]
+manager_uri = https://10.0.x.3:8189
+
+[clustering]
+manager_uri = clustermanager:10.0.x.3:8089
+mode = searchhead
+
+[clustermanager:10.0.x.3:8089]
+manager_uri = https://10.0.x.3:8089
+multisite = true
+pass4SymmKey = {hashed_idxcluster}
+site = site1
+
+--------------------------------------------------------------------------
+Check and compare on SH2: ~/sh1/etc/system/local/server.conf
+--------------------------------------------------------------------------
+...
+[general]
+serverName = sh2
+pass4SymmKey = {splunk_hash}
+site = site2
+...
+[license]
+manager_uri = https://10.0.x.3:8189
+
+[clustering]
+manager_uri = https://10.0.x.3:8089
+mode = searchhead
+multisite = true
+pass4SymmKey = {hashed_idxcluster}
+
+
+
+
+
+
+============================================================================================================
+= LAB 4: Monitor Manager Node Service Activities                                                                             =
+============================================================================================================
+--------------------------------------------------------------------------
+Check and compare on CMANAGER: ~/cmanager/etc/manager-apps/bcg_web_idx/local/indexes.conf
+--------------------------------------------------------------------------
+[web]
+repFactor=auto
+
+
+--------------------------------------------------------------------------
+~/cmanager/etc/system/local/outputs.conf
+--------------------------------------------------------------------------
+[indexAndForward]
+index = false
+
+[tcpout]
+defaultGroup = default-autolb-group
+forwardedindex.filter.disable = true  
+indexAndForward = false 
+  
+[tcpout:default-autolb-group]
+server=10.0.x.1:9197,10.0.x.1:9297,10.0.x.1:9397,10.0.x.1:9497
+useACK = true
+
+
+--------------------------------------------------------------------------
+~/cmanager/etc/system/local/server.conf
+--------------------------------------------------------------------------
+...
+[general]
+serverName = cmanager
+pass4SymmKey = {splunk_hash}
+site = site1
+...
+[license]
+manager_uri = https://10.0.x.3:8189
+
+[clustering]
+mode = manager
+pass4SymmKey = {hashed_idxcluster}
+replication_factor = 1
+search_factor = 1
+available_sites = site1,site2
+multisite = true
+site_replication_factor = origin:1,total:2
+site_search_factor = origin:1,total:2
+maintenance_mode = false
+cluster_label = idxc-x
+
+
+--------------------------------------------------------------------------
+Check and compare on DSERVER: ~/dserver/etc/system/local/server.conf
+--------------------------------------------------------------------------
+[general]
+serverName = dserver
+pass4SymmKey = {splunk_hash}
+site = site0
+...
+[license]
+active_group = Enterprise
+
+[clustering]
+manager_uri = https://10.0.x.3:8089
+mode = searchhead
+multisite = true
+pass4SymmKey = {hashed_idxcluster}
+
+
+--------------------------------------------------------------------------
+~/dserver/etc/system/local/outputs.conf
+--------------------------------------------------------------------------
+[indexAndForward]
+index = false
+
+[tcpout]
+defaultGroup = default-autolb-group
+forwardedindex.filter.disable = true  
+indexAndForward = false 
+  
+[tcpout:default-autolb-group]
+server=10.0.x.1:9197,10.0.x.1:9297,10.0.x.1:9397,10.0.x.1:9497
+useACK = true
+
+
+--------------------------------------------------------------------------
+~/dserver/etc/system/local/distsearch.conf
+--------------------------------------------------------------------------
+[distributedSearch]
+servers = https://10.0.x.3:8089
+
+[distributedSearch:dmc_group_search_head]
+servers = localhost:localhost,10.0.x.3:8089
+
+[distributedSearch:dmc_group_cluster_manager]
+servers = 10.0.x.3:8089
+
+[distributedSearch:dmc_group_license_manager]
+servers = localhost:localhost
+
+[distributedSearch:dmc_group_indexer]
+default = true
+servers = 10.0.x.1:8189,10.0.x.1:8289,10.0.x.1:8389,10.0.x.1:8489
+
+[distributedSearch:dmc_indexerclustergroup_idxc-onez]
+servers = localhost:localhost,10.0.x.1:8189,10.0.x.1:8289,10.0.x.1:8389,10.0.x.1:8489,10.0.x.3:8089
+
+[distributedSearch:dmc_group_shc_deployer]
+
+[distributedSearch:dmc_group_deployment_server]
+
+[distributedSearch:dmc_group_kv_store]
+
+
+
+--------------------------------------------------------------------------
+~/dserver/etc/apps/splunk_monitoring_console/local/splunk_monitoring_console_assets.conf 
+--------------------------------------------------------------------------
+[settings]
+configuredPeers = 10.0.x.3:8089,10.0.x.1:8189,10.0.x.1:8289,10.0.x.1:8389,10.0.x.1:8489
+disabled = 0
+
+--------------------------------------------------------------------------
+~/dserver/etc/apps/splunk_monitoring_console/lookups/assets.csv  
+--------------------------------------------------------------------------
+peerURI,serverName,host,machine,"search_group","_mkv_child","_timediff","__mv_peerURI","__mv_serverName","__mv_host","__mv_machine","__mv_search_group","__mv__mkv_child","__mv__timediff"
+"10.0.x.1:8189",idx1,idx1,"ip-10-0-x-1","dmc_group_indexer",0,,,,,,,,
+"10.0.x.1:8189",idx1,idx1,"ip-10-0-x-1","dmc_indexerclustergroup_idxc-x",1,,,,,,,,
+"10.0.x.1:8289",idx2,idx2,"ip-10-0-x-1","dmc_group_indexer",0,,,,,,,,
+"10.0.x.1:8289",idx2,idx2,"ip-10-0-x-1","dmc_indexerclustergroup_idxc-x",1,,,,,,,,
+"10.0.x.1:8389",idx3,idx3,"ip-10-0-x-1","dmc_group_indexer",0,,,,,,,,
+"10.0.x.1:8389",idx3,idx3,"ip-10-0-x-1","dmc_indexerclustergroup_idxc-x",1,,,,,,,,
+"10.0.x.1:8489",idx4,idx4,"ip-10-0-x-1","dmc_group_indexer",0,,,,,,,,
+"10.0.x.1:8489",idx4,idx4,"ip-10-0-x-1","dmc_indexerclustergroup_idxc-x",1,,,,,,,,
+"10.0.x.3:8089",cmanager,cmanager,"ip-10-0-x-3","dmc_group_cluster_manager",0,,,,,,,,
+"10.0.x.3:8089",cmanager,cmanager,"ip-10-0-x-3","dmc_group_search_head",1,,,,,,,,
+"10.0.x.3:8089",cmanager,cmanager,"ip-10-0-x-3","dmc_indexerclustergroup_idxc-x",2,,,,,,,,
+localhost,dserver,dserver,"ip-10-0-x-3","dmc_group_license_manager",0,,,,,,,,
+localhost,dserver,dserver,"ip-10-0-x-3","dmc_group_search_head",1,,,,,,,,
+localhost,dserver,dserver,"ip-10-0-x-3","dmc_indexerclustergroup_idxc-x",2,,,,,,,,
+
+
+
+
+
+============================================================================================================
+= LAB 5: Configure a Forwarder                                                                             =
+============================================================================================================
+--------------------------------------------------------------------------
+Check and compare on CMANAGER: ~/cmanager/etc/system/local/server.conf
+--------------------------------------------------------------------------
+[general]
+serverName = cmanager
+pass4SymmKey = {splunk_hash}
+site = site1
+...
+[license]
+manager_uri = https://10.0.x.3:8189
+
+[clustering]
+mode = manager
+pass4SymmKey = {hashed_idxcluster}
+replication_factor = 1
+search_factor = 1
+available_sites = site1,site2
+multisite = true
+site_replication_factor = origin:1,total:2
+site_search_factor = origin:1,total:2
+maintenance_mode = false
+cluster_label = idxc-x
+forwarder_site_failover = site1:site2
+
+[indexer_discovery]
+pass4SymmKey = {hash_for_indexer_discovery}
+
+
+-----------------------------------------------------------------------------------
+Edit outputs.conf on DSERVER: ~/dserver/deployment-apps/uf_base/local/outputs.conf
+-----------------------------------------------------------------------------------
+[tcpout]
+defaultGroup = default-autolb-group
+
+[tcpout:default-autolb-group]
+indexerDiscovery = idxc1
+useACK = true
+autoLBVolume = 262144
+
+[indexer_discovery:idxc1]
+manager_uri = https://10.0.x.3:8089
+pass4SymmKey = idxforwarders
+
+--------------------------------------------------------------------------
+Check and compare on FWDR: ~/fwdr/etc/apps/uf_base/local/server.conf 
+--------------------------------------------------------------------------
+[general]
+site = site1
+
+--------------------------------------------------------------------------
+Check and compare on FWDR: ~/fwdr/etc/apps/uf_base/local/props.conf 
+--------------------------------------------------------------------------
+[default]
+EVENT_BREAKER_ENABLE = true
+
+--------------------------------------------------------------------------
+~/fwdr/etc/apps/uf_base/local/outputs.conf 
+--------------------------------------------------------------------------
+[tcpout]
+defaultGroup = default-autolb-group
+
+[tcpout:default-autolb-group]
+indexerDiscovery = idxc1
+useACK = true
+autoLBVolume = 262144
+
+[indexer_discovery:idxc1]
+manager_uri = https://10.0.x.3:8089
+pass4SymmKey = {hash_for_indexer_discovery}
+
+--------------------------------------------------------------------------
+~/fwdr/etc/system/local/deploymentclient.conf 
+--------------------------------------------------------------------------
+[target-broker:deploymentServer]
+targetUri = 10.0.x.3:8189
+
+
+
+
+
+
+============================================================================================================
+= LAB 6: Enable Search Head Cluster                                                                        =
+============================================================================================================
+--------------------------------------------------------------------------
+Check and compare on SH1: ~/sh1/etc/system/local/server.conf
+NOTE: No changes on this instance
+--------------------------------------------------------------------------
+[general]
+serverName = sh1
+pass4SymmKey = {splunk_hash}
+...
+[license]
+manager_uri = https://10.0.x.3:8189
+
+[clustering]
+manager_uri = clustermanager:10.0.x.3:8089
+mode = searchhead
+
+[clustermanager:10.0.x.3:8089]
+manager_uri = https://10.0.x.3:8089
+multisite = true
+pass4SymmKey = {indexer_cluser_hash}
+site = site1
+
+--------------------------------------------------------------------------
+Check and compare on SH2: ~/sh2/etc/system/local/server.conf 
+--------------------------------------------------------------------------
+[general]
+serverName = sh2
+pass4SymmKey = {splunk_hash}
+site = site2
+...
+[license]
+manager_uri = https://10.0.x.3:8189
+
+[clustering]
+manager_uri = https://10.0.x.3:8089
+mode = searchhead
+multisite = true
+pass4SymmKey = {indexer_cluser_hash}
+
+[replication_port://9200]
+
+[shclustering]
+disabled = 0
+mgmt_uri = https://10.0.x.2:8289
+pass4SymmKey = {search_head_cluster_hash}
+id = {common_search_head_cluster_ID}
+shcluster_label = shc-x
+
+--------------------------------------------------------------------------
+Check and compare on SH3: ~/sh3/etc/system/local/server.conf 
+--------------------------------------------------------------------------
+[general]
+serverName = sh3
+pass4SymmKey = {splunk_hash}
+site = site2
+...
+[license]
+manager_uri = https://10.0.x.3:8189
+
+[clustering]
+manager_uri = https://10.0.x.3:8089
+mode = searchhead
+multisite = true
+pass4SymmKey = {indexer_cluster_hash}
+
+[replication_port://9300]
+
+[shclustering]
+disabled = 0
+mgmt_uri = https://10.0.x.2:8389
+pass4SymmKey = {search_head_cluster_hash}
+id = {common_search_head_cluster_ID}
+shcluster_label = shc-x
+
+--------------------------------------------------------------------------
+Check and compare on SH4: ~/sh4/etc/system/local/server.conf 
+--------------------------------------------------------------------------
+[general]
+serverName = sh4
+pass4SymmKey = {splunk_hash}
+site = site2
+...
+[license]
+manager_uri = https://10.0.x.3:8189
+
+[clustering]
+manager_uri = https://10.0.x.3:8089
+mode = searchhead
+multisite = true
+pass4SymmKey = {indexer_cluser_hash}
+
+[replication_port://9400]
+
+[shclustering]
+disabled = 0
+mgmt_uri = https://10.0.x.2:8489
+pass4SymmKey = {search_head_cluster_hash}
+id = {common_search_head_cluster_ID}
+shcluster_label = shc-x
+
+
+
+
+
+============================================================================================================
+= LAB 7: Deploy an App to SHC                                                                                       =
+============================================================================================================
+--------------------------------------------------------------------------
+No changes on SH1: ~/sh1/etc/system/local/server.conf 
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+Check and Compare on SH2: ~/sh2/etc/system/local/server.conf 
+--------------------------------------------------------------------------
+...
+[replication_port://9200]
+
+[shclustering]
+disabled = 0
+mgmt_uri = https://10.0.x.2:8289
+pass4SymmKey = {search_head_cluster_hash}
+id = {common_search_head_cluster_id}
+shcluster_label = shc-x
+conf_deploy_fetch_url = https://10.0.x.3:8189
+
+--------------------------------------------------------------------------
+Check and Compare on SH3: ~/sh3/etc/system/local/server.conf 
+--------------------------------------------------------------------------
+...
+[replication_port://9300]
+
+[shclustering]
+disabled = 0
+mgmt_uri = https://10.0.x.2:8389
+pass4SymmKey = {search_head_cluster_hash}
+id = {common_search_head_cluster_id}
+shcluster_label = shc-x
+conf_deploy_fetch_url = https://10.0.x.3:8189
+
+--------------------------------------------------------------------------
+Check and Compare on SH4: ~/sh4/etc/system/local/server.conf 
+--------------------------------------------------------------------------
+...
+[replication_port://9400]
+
+[shclustering]
+disabled = 0
+mgmt_uri = https://10.0.x.2:8489
+pass4SymmKey = {search_head_cluster_hash}
+id = {common_search_head_cluster_id}
+shcluster_label = shc-x
+conf_deploy_fetch_url = https://10.0.x.3:8189
+
+--------------------------------------------------------------------------
+Check Deployer app deployment 
+--------------------------------------------------------------------------
+ls ~/{sh2,sh3,sh4}/etc/apps/bcg_web
+Should return four identical sub-directory list
+For example, /opt/home/jane/sh2/etc/apps/bcg_web:
+bin  default  metadata
+
+
+
+--------------------------------------------------------------------------
+Check and Compare on DSERVER: ~/dserver/etc/system/local/server.conf 
+--------------------------------------------------------------------------
+...
+[shclustering]
+pass4SymmKey = {search_head_cluster_hash}
+
+
+--------------------------------------------------------------------------
+~/dserver/etc/system/local/serverclass.conf 
+--------------------------------------------------------------------------
+[serverClass:eng_uf]
+whitelist.0 = 10.0.x.3
+
+[serverClass:eng_uf:app:uf_base]
+restartSplunkWeb = 0
+restartSplunkd = 1
+stateOnClient = enabled
+
+[serverClass:eng_uf:app:bcg_web_TA]
+restartSplunkWeb = 0
+restartSplunkd = 1
+stateOnClient = enabled
+
+
+--------------------------------------------------------------------------
+~/dserver/etc/system/local/distsearch.conf
+--------------------------------------------------------------------------
+[distributedSearch]
+servers = https://10.0.x.2:8289,https://10.0.x.2:8389,https://10.0.x.2:8489,https://10.0.x.3:8089
+
+[distributedSearch:dmc_group_cluster_manager]
+servers = 10.0.x.3:8089
+
+[distributedSearch:dmc_group_deployment_server]
+servers = localhost:localhost
+
+[distributedSearch:dmc_group_license_manager]
+servers = localhost:localhost
+
+[distributedSearch:dmc_group_shc_deployer]
+servers = localhost:localhost
+
+[distributedSearch:dmc_group_kv_store]
+servers = 10.0.x.2:8289,10.0.x.2:8389,10.0.x.2:8489
+
+[distributedSearch:dmc_group_search_head]
+servers = localhost:localhost,10.0.x.2:8289,10.0.x.2:8389,10.0.x.2:8489,10.0.x.3:8089
+
+[distributedSearch:dmc_group_indexer]
+default = true
+servers = 10.0.x.1:8189,10.0.x.1:8289,10.0.x.1:8389,10.0.x.1:8489
+
+[distributedSearch:dmc_indexerclustergroup_idxc-1]
+servers = localhost:localhost,10.0.x.1:8189,10.0.x.1:8289,10.0.x.1:8389,10.0.x.1:8489,10.0.x.2:8289,10.0.x.2:8389,10.0.x.2:8489,10.0.x.3:8089
+
+[distributedSearch:dmc_searchheadclustergroup_shc-onez]
+servers = 10.0.x.2:8289,10.0.x.2:8389,10.0.x.2:8489
+
+
+--------------------------------------------------------------------------
+~/dserver/etc/apps/splunk_monitoring_console/lookups/assets.csv  
+--------------------------------------------------------------------------
+peerURI,serverName,host,machine,"search_group","_mkv_child","_timediff","__mv_peerURI","__mv_serverName","__mv_host","__mv_machine","__mv_search_group","__mv__mkv_child","__mv__timediff"
+"10.0.x.1:8189",idx1,idx1,"ip-10-0-x-1","dmc_group_indexer",0,,,,,,,,
+"10.0.x.1:8189",idx1,idx1,"ip-10-0-x-1","dmc_indexerclustergroup_idxc-x",1,,,,,,,,
+"10.0.x.1:8289",idx2,idx2,"ip-10-0-x-1","dmc_group_indexer",0,,,,,,,,
+"10.0.x.1:8289",idx2,idx2,"ip-10-0-x-1","dmc_indexerclustergroup_idxc-x",1,,,,,,,,
+"10.0.x.1:8389",idx3,idx3,"ip-10-0-x-1","dmc_group_indexer",0,,,,,,,,
+"10.0.x.1:8389",idx3,idx3,"ip-10-0-x-1","dmc_indexerclustergroup_idxc-x",1,,,,,,,,
+"10.0.x.1:8489",idx4,idx4,"ip-10-0-x-1","dmc_group_indexer",0,,,,,,,,
+"10.0.x.1:8489",idx4,idx4,"ip-10-0-x-1","dmc_indexerclustergroup_idxc-x",1,,,,,,,,
+"10.0.x.2:8289",sh2,sh2,"ip-10-0-x-2","dmc_group_kv_store",0,,,,,,,,
+"10.0.x.2:8289",sh2,sh2,"ip-10-0-x-2","dmc_group_search_head",1,,,,,,,,
+"10.0.x.2:8289",sh2,sh2,"ip-10-0-x-2","dmc_indexerclustergroup_idxc-x",2,,,,,,,,
+"10.0.x.2:8289",sh2,sh2,"ip-10-0-x-2","dmc_searchheadclustergroup_shc-x",3,,,,,,,,
+"10.0.x.2:8389",sh3,sh3,"ip-10-0-x-2","dmc_group_kv_store",0,,,,,,,,
+"10.0.x.2:8389",sh3,sh3,"ip-10-0-x-2","dmc_group_search_head",1,,,,,,,,
+"10.0.x.2:8389",sh3,sh3,"ip-10-0-x-2","dmc_indexerclustergroup_idxc-x",2,,,,,,,,
+"10.0.x.2:8389",sh3,sh3,"ip-10-0-x-2","dmc_searchheadclustergroup_shc-x",3,,,,,,,,
+"10.0.x.2:8489",sh4,sh4,"ip-10-0-x-2","dmc_group_kv_store",0,,,,,,,,
+"10.0.x.2:8489",sh4,sh4,"ip-10-0-x-2","dmc_group_search_head",1,,,,,,,,
+"10.0.x.2:8489",sh4,sh4,"ip-10-0-x-2","dmc_indexerclustergroup_idxc-x",2,,,,,,,,
+"10.0.x.2:8489",sh4,sh4,"ip-10-0-x-2","dmc_searchheadclustergroup_shc-x",3,,,,,,,,
+"10.0.x.3:8089",cmanager,cmanager,"ip-10-0-x-3","dmc_group_cluster_manager",0,,,,,,,,
+"10.0.x.3:8089",cmanager,cmanager,"ip-10-0-x-3","dmc_group_search_head",1,,,,,,,,
+"10.0.x.3:8089",cmanager,cmanager,"ip-10-0-x-3","dmc_indexerclustergroup_idxc-x",2,,,,,,,,
+localhost,dserver,dserver,"ip-10-0-x-3","dmc_group_deployment_server",0,,,,,,,,
+localhost,dserver,dserver,"ip-10-0-x-3","dmc_group_license_manager",1,,,,,,,,
+localhost,dserver,dserver,"ip-10-0-x-3","dmc_group_search_head",2,,,,,,,,
+localhost,dserver,dserver,"ip-10-0-x-3","dmc_group_shc_deployer",3,,,,,,,,
+localhost,dserver,dserver,"ip-10-0-x-3","dmc_indexerclustergroup_idxc-x",4,,,,,,,,
+
+
+
+
+
+
+============================================================================================================
+= LAB 8: Add a KV Store Collection                                                                                       =
+============================================================================================================
+--------------------------------------------------------------------------
+Check on DSERVER: ~/dserver/etc/shcluster/apps/bcg_web/default/collections.conf 
+--------------------------------------------------------------------------
+[product_collection]
+enforceTypes = true
+field.price = number
+field.sale_price = number
+replicate = true
+
+--------------------------------------------------------------------------
+No changes on SH1 
+--------------------------------------------------------------------------
+
+--------------------------------------------------------------------------
+Check on SH2,SH3,SH4: ~/sh2/etc/apps/bcg_web/default/collections.conf 
+--------------------------------------------------------------------------
+[product_collection]
+enforceTypes = true
+field.price = number
+field.sale_price = number
+replicate = true
+
+
+
+
+
+
+
+============================================================================================================
+= LAB 9: Migrate the Indexer Cluster to use SmartStore                                                                                      =
+============================================================================================================
+--------------------------------------------------------------------------
+Check on SH5: ~/sh5/etc/system/local/indexes.conf 
+--------------------------------------------------------------------------
+[default]
+remotePath = volume:s3vol/$_index_name
+maxGlobalDataSizeMB = 500000
+maxDataSize = auto
+
+[volume:s3vol]
+storageType = remote
+path = <s3_bucket_ns>/test-<student-id>
+remote.s3.access_key = <access_key>
+remote.s3.secret_key = <secret_key>
+remote.s3.endpoint = <aws_region_uri>
+
+--------------------------------------------------------------------------
+Check on CMANAGER: ~/cmanager/etc/system/local/server.conf 
+--------------------------------------------------------------------------
+...
+[clustering]
+mode = manager
+pass4SymmKey = <hashed_key>
+replication_factor = 1
+search_factor = 1
+available_sites = site1,site2
+multisite = true
+site_replication_factor = origin:1,total:2
+site_search_factor = origin:1,total:2
+cluster_label = idxc-onez
+constrain_singlesite_buckets = false
+...
+
+--------------------------------------------------------------------------
+Check on CMANAGER: ~/cmanager/etc/manager-apps/_cluster/local/indexes.conf
+--------------------------------------------------------------------------
+[default]
+remotePath = volume:s3vol/$_index_name
+maxGlobalDataSizeMB = 500000
+maxDataSize = auto
+
+[volume:s3vol]
+storageType = remote
+path = <s3_bucket_ns>/idxc-<student-id>
+remote.s3.access_key = <access_key>
+remote.s3.secret_key = <secret_key>
+remote.s3.endpoint = <aws_region_uri>
