@@ -1,27 +1,15 @@
 // Place your key bindings in this file to override the defaults
 [
-  // ! Text Navigation
-  {
-    "key": "ctrl+l",
-    "command": "cursorRight",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+h",
-    "command": "cursorLeft",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "cursorUp",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "cursorDown",
-    "when": "textInputFocus"
-  },
   // ! Sidebar Navigation
+  {
+    "key": "ctrl+e",
+    "command": "editor.action.inlineSuggest.hide",
+    "when": "inlineSuggestionVisible"
+  },
+  {
+    "key": "ctrl+0",
+    "command": "workbench.action.focusSideBar"
+  },
   {
     "key": "j",
     "command": "list.focusDown",
@@ -95,22 +83,7 @@
     "key": "alt+o n",
     "command": "workbench.action.files.newUntitledFile"
   },
-  // ! Terminals in editor group
-  {
-    "key": "alt+t p",
-    "command": "workbench.action.terminal.splitActiveTab",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "alt j",
-    "command": "workbench.action.terminal.focusNextPane",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "alt k",
-    "command": "workbench.action.terminal.focusPreviousPane",
-    "when": "terminalFocus"
-  },
+  // ! Terminals navigation
   {
     "key": "ctrl+9",
     "command": "workbench.action.focusPanel"
@@ -118,45 +91,65 @@
   // ! Quick Open Navigation
   {
     "key": "ctrl+n",
-    "command": "selectNextSuggestion",
-    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
   },
   {
     "key": "ctrl+p",
-    "command": "selectPrevSuggestion",
-    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
   },
   {
     "key": "ctrl+n",
-    "command": "quickInput.next",
-    "when": "inQuickInput"
+    "command": "extension.vim_ctrl+n",
+    "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl || vim.active && vim.use<C-n> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-n> && !inDebugRepl && vim.mode == 'SearchInProgressMode' && !inQuickOpen"
   },
   {
     "key": "ctrl+p",
-    "command": "quickInput.previous",
-    "when": "inQuickInput"
+    "command": "extension.vim_ctrl+p",
+    "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode' && !inQuickOpen"
+  },
+  // ! Hide autocompletions
+  {
+    "key": "ctrl+e",
+    "command": "extension.vim_ctrl+e",
+    "when": "editorTextFocus && vim.active && vim.use<C-e> && !inDebugRepl && !inQuickOpen && !inlineSuggestionVisible && !suggestWidgetVisible"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "workbench.action.closeQuickOpen",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "hideSuggestWidget",
+    "when": "suggestWidgetVisible"
   },
   // ! Swap Tabs that arent files using the same keybinds that files use
   {
-    "key": "alt+l",
-    "command": "workbench.action.nextEditor"
+    "key": "ctrl+1",
+    "command": "workbench.action.focusFirstEditorGroup"
   },
   {
-    "key": "alt+h",
-    "command": "workbench.action.previousEditor"
+    "key": "shift+l",
+    "command": "workbench.action.nextEditor",
+    "when": "!textInputFocus && !sideBarFocus && !panelFocus"
   },
   {
-    "key": "ctrl+pagedown",
-    "command": "-workbench.action.nextEditor"
-  },
-  {
-    "key": "ctrl+pageup",
-    "command": "-workbench.action.previousEditor"
+    "key": "shift+h",
+    "command": "workbench.action.previousEditor",
+    "when": "!textInputFocus && !sideBarFocus  && !panelFocus"
   },
   // ! Close window using similar keybind as the vim motion
   {
-    "key": "alt+q",
+    "key": "alt+shift+q",
     "command": "workbench.action.closeActiveEditor"
+  },
+  // ! Code Runner
+  {
+    "key": "f5",
+    "command": "C_Cpp_Runner.buildFolder",
+    "when": "C_Cpp_Runner:activatedExtension"
   },
   // ! Removed Conflicting Keybindings
   {
@@ -185,10 +178,6 @@
     "when": "accessibilityModeEnabled && accessibleViewOnLastLine && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal' || accessibilityModeEnabled && accessibleViewOnLastLine && terminalProcessSupported && accessibleViewCurrentProviderId == 'terminal'"
   },
   {
-    "key": "ctrl+9",
-    "command": "-workbench.action.lastEditorInGroup"
-  },
-  {
     "key": "f5",
     "command": "-workbench.action.debug.continue",
     "when": "debugState == 'stopped'"
@@ -204,13 +193,106 @@
     "when": "!debuggersAvailable"
   },
   {
-    "key": "f5",
-    "command": "C_Cpp_Runner.buildFolder",
-    "when": "C_Cpp_Runner:activatedExtension"
-  },
-  {
     "key": "ctrl+k b",
     "command": "-C_Cpp_Runner.buildFolder",
     "when": "C_Cpp_Runner:activatedExtension"
   },
+  {
+    "key": "ctrl+g",
+    "command": "-workbench.action.terminal.goToRecentDirectory",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "-workbench.action.gotoLine"
+  },
+  // ? Why are we focussing so many groups????
+  {
+    "key": "ctrl+2",
+    "command": "-workbench.action.focusSecondEditorGroup"
+  },
+  {
+    "key": "ctrl+3",
+    "command": "-workbench.action.focusThirdEditorGroup"
+  },
+  {
+    "key": "ctrl+4",
+    "command": "-workbench.action.focusFourthEditorGroup"
+  },
+  {
+    "key": "ctrl+5",
+    "command": "-workbench.action.focusFifthEditorGroup"
+  },
+  {
+    "key": "ctrl+6",
+    "command": "-workbench.action.focusSixthEditorGroup"
+  },
+  {
+    "key": "ctrl+7",
+    "command": "-workbench.action.focusSeventhEditorGroup"
+  },
+  {
+    "key": "ctrl+8",
+    "command": "-workbench.action.focusEighthEditorGroup"
+  },
+  {
+    "key": "ctrl+9",
+    "command": "-workbench.action.lastEditorInGroup"
+  },
+  {
+    "key": "ctrl+pagedown",
+    "command": "-workbench.action.nextEditor"
+  },
+  {
+    "key": "ctrl+pageup",
+    "command": "-workbench.action.previousEditor"
+  },
+  {
+    "key": "ctrl+1",
+    "command": "-workbench.action.focusFirstEditorGroup"
+  },
+  {
+    "key": "alt+1",
+    "command": "-workbench.action.openEditorAtIndex1"
+  },
+  {
+    "key": "alt+2",
+    "command": "-workbench.action.openEditorAtIndex2"
+  },
+  {
+    "key": "alt+3",
+    "command": "-workbench.action.openEditorAtIndex3"
+  },
+  {
+    "key": "alt+4",
+    "command": "-workbench.action.openEditorAtIndex4"
+  },
+  {
+    "key": "alt+5",
+    "command": "-workbench.action.openEditorAtIndex5"
+  },
+  {
+    "key": "alt+6",
+    "command": "-workbench.action.openEditorAtIndex6"
+  },
+  {
+    "key": "alt+7",
+    "command": "-workbench.action.openEditorAtIndex7"
+  },
+  {
+    "key": "alt+8",
+    "command": "-workbench.action.openEditorAtIndex8"
+  },
+  {
+    "key": "alt+9",
+    "command": "-workbench.action.openEditorAtIndex9"
+  },
+  {
+    "key": "alt+0",
+    "command": "-workbench.action.lastEditorInGroup"
+  },
+  {
+    "key": "ctrl+0",
+    "command": "-workbench.action.focusSideBar"
+  }
 ]
