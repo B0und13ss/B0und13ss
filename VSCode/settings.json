@@ -9,11 +9,17 @@
   "code-runner.executorMap": {
     "javascript": "node",
     "typescript": "ts-node",
-    "python": "python3",
+    "python": "python3"
   },
   "C_Cpp_Runner.cStandard": "gnu23",
   "C_Cpp_Runner.cppStandard": "gnu++23",
+  "C_Cpp_Runner.useAddressSanitizer": true,
+  "C_Cpp_Runner.useUndefinedSanitizer": true,
+  "C_Cpp_Runner.useLeakSanitizer": true,
+  "C_Cpp_Runner.useLinkTimeOptimization": true,
+  "C_Cpp.clang_format_fallbackStyle": "Google",
   "debug.showInlineBreakpointCandidates": false,
+  "errorLens.messageBackgroundMode": "message",
   "editor.codeLens": false,
   "editor.cursorBlinking": "blink",
   "editor.cursorStyle": "line-thin",
@@ -35,7 +41,8 @@
   "editor.scrollbar.verticalScrollbarSize": 0,
   "editor.showFoldingControls": "never",
   "editor.stickyScroll.enabled": false,
-  "editor.suggest.insertMode": "insert",
+  "editor.suggest.insertMode": "replace",
+  "editor.formatOnSave": true,
   "editor.tabSize": 2,
   "editor.wordWrap": "off",
   "explorer.compactFolders": false,
@@ -50,20 +57,21 @@
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "never",
+  "terminal.integrated.defaultLocation": "editor",
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.port": 8080,
-  "workbench.panel.defaultLocation": "right",
   "vsicons.presets.hideExplorerArrows": true,
   "security.workspace.trust.untrustedFiles": "open",
+  "security.allowedUNCHosts": ["wsl.localhost"],
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.focusAfterRun": "terminal",
   "terminal.integrated.scrollback": 10000,
-  "terminal.integrated.defaultLocation": "editor",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.fontSize": 18,
-  "terminal.integrated.gpuAcceleration": "off",
+  "terminal.integrated.gpuAcceleration": "on",
   "terminal.integrated.tabStopWidth": 2,
+  "terminal.integrated.tabs.enabled": false,
   "vsicons.dontShowNewVersionMessage": true,
   "window.commandCenter": false,
   "window.customMenuBarAltFocus": false,
@@ -73,13 +81,14 @@
   "window.newWindowProfile": "Default",
   "window.restoreWindows": "none",
   "window.title": "NeoCode",
+  "workbench.layoutControl.enabled": false,
+  "workbench.panel.defaultLocation": "right",
   "workbench.activityBar.location": "hidden",
   "workbench.editor.editorActionsLocation": "hidden",
   "workbench.editor.empty.hint": "hidden",
   "workbench.editor.enablePreview": true,
   "workbench.editor.showTabs": "multiple",
   "workbench.iconTheme": "vscode-icons",
-  "workbench.layoutControl.enabled": false,
   "workbench.panel.opensMaximized": "preserve",
   "workbench.productIconTheme": "fluent-icons",
   "workbench.settings.editor": "json",
@@ -102,6 +111,9 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
   // ! Android Emulator
   "emulator.hasEditorTitleIcon": false,
   "emulator.emulatorPath": "C:\\android-sdk\\emulator",
@@ -121,40 +133,138 @@
       "sideBar.background": "#11111b",
       "sideBarTitle.background": "#11111b",
       "sideBarSectionHeader.background": "#11111b",
-      "statusBar.border": "#1e1e2e",
+      "statusBar.border": "#11111b",
+      "statusBar.noFolderBorder": "#11111b",
+      "statusBar.debuggingBorder": "#11111b",
       "tab.activeBorderTop": "#1e1e2e",
       "tab.border": "#00000000",
       "tab.inactiveBackground": "#11111b",
       "editorGroup.border": "#1e1e2e",
       "titleBar.inactiveBackground": "#11111b",
       "panel.background": "#11111b",
-      "statusBarItem.remoteBackground": "#f5c2e7",
-      "statusBar.background": "#f5c2e7",
-      "statusBar.noFolderBackground": "#f5c2e7",
-      "statusBar.debuggingBackground": "#f5c2e7",
-      "statusBarItem.remoteForeground": "#11111b",
-      "statusBar.foreground": "#11111b",
-      "statusBar.noFolderForeground": "#11111b",
-      "statusBar.debuggingForeground": "#11111b",
+      "panel.border": "#11111b",
+      "statusBarItem.remoteBackground": "#11111b",
+      "statusBar.background": "#11111b",
+      "statusBar.noFolderBackground": "#11111b",
+      "statusBar.debuggingBackground": "#11111b",
+      "statusBarItem.remoteForeground": "#cdd6f4"
     },
     "[Default Dark Modern]": {
+      "titleBar.border": "#2b2b2b00",
       "titleBar.inactiveBackground": "#181818",
       "titleBar.inactiveForeground": "#cccccc",
-      "tab.activeBorderTop":"#1f1f1f",
-      "statusBar.noFolderBackground":"#181818",
+      "tab.activeBorderTop": "#1f1f1f",
+      "statusBar.noFolderBackground": "#181818",
       "statusBar.noFolderForeground": "#cccccc",
       "statusBar.debuggingBackground": "#181818",
       "statusBar.debuggingForeground": "#cccccc",
       "statusBarItem.remoteBackground": "#181818",
-      "statusBarItem.remoteForeground": "#cccccc",
+      "statusBarItem.remoteForeground": "#cccccc"
+    },
+    "[Vim Dark Hard]": {
+      "titleBar.border": "#3c3836",
+      "panel.border": "#3c3836",
+      "statusBar.border": "#3c3836",
+      "statusBar.noFolderBorder": "#3c3836",
+      "sideBar.border": "#3c3836",
+      "statusBar.debuggingBackground": "#1d2021",
+      "statusBar.debuggingForeground": "#ebdbb2",
+      "statusBarItem.remoteBackground": "#1d2021"
     }
   },
-  "security.allowedUNCHosts": [
-    "wsl.localhost"
-  ],
-  "[c]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
-  },
-  "terminal.integrated.tabs.enabled": false,
   // ! VSCode Vim
+  "vim.disableExtension": false,
+  "vim.leader": "<Space>",
+  "vim.useSystemClipboard": true,
+  "vim.hlsearch": true,
+  "vim.useCtrlKeys": true,
+  "vim.changeWordIncludesWhitespace": true,
+  "vim.smartRelativeLine": true,
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.color": "rgb(249, 226, 175)",
+  "vim.highlightedyank.textColor": "rgb(30, 30, 46)",
+  "vim.highlightedyank.duration": 100,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {"before": ["<Escape>"], "commands": [":noh"]},
+    {"before": ["leader", "w"], "commands": [":w!"]},
+    {"before": ["leader", "x"], "commands": [":x!"]},
+    {"before": ["<S-h>"], "commands": [":bprevious"]},
+    {"before": ["<S-l>"], "commands": [":bnext"]},
+    {
+      "before": ["leader", "h"],
+      "commands": ["workbench.action.focusLeftGroup"]
+    },
+    {
+      "before": ["leader", "j"],
+      "commands": ["workbench.action.focusBelowGroup"]
+    },
+    {
+      "before": ["leader", "k"],
+      "commands": ["workbench.action.focusAboveGroup"]
+    },
+    {
+      "before": ["leader", "l"],
+      "commands": ["workbench.action.focusRightGroup"]
+    },
+    {
+      "before": ["leader", "/"],
+      "commands": ["fuzzySearch.activeTextEditor"]
+    },
+    // ! f
+    {
+      "before": ["leader", "f", "r"],
+      "commands": ["workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"]
+    },
+    {"before": ["leader", "f", "f"], "commands": ["editor.action.formatDocument"]},
+    // ! g
+    {
+      "before": ["leader", "g", "s"],
+      "commands": ["workbench.action.gotoSymbol"]
+    },
+    {
+      "before": ["leader", "g", "d"],
+      "commands": ["editor.action.revealDefinition"]
+    },
+    {
+      "before": ["leader", "g", "r"],
+      "commands": ["editor.action.goToReferences"]
+    },
+    {
+      "before": ["leader", "g", "I"],
+      "commands": ["editor.action.goToImplimentation"]
+    },
+    // ! p
+    {"before": ["leader", "p", "v"], "commands": [":vsplit"]},
+    {"before": ["leader", "p", "h"], "commands": [":split"]},
+    // ! r
+    {
+      "before": ["leader", "r", "s"],
+      "commands": ["code-runner.stop"]
+    },
+    {
+      "before": ["leader", "r", "r"],
+      "commands": ["code-runner.run"]
+    },
+    {
+      "before": ["leader", "r", "e"],
+      "commands": ["emulator.start"]
+    }
+  ],
+  "vim.insertModeKeyBindings": [
+    {"before": ["<C-h>"], "commands": ["cursorLeft"]},
+    {"before": ["<C-l>"], "commands": ["cursorRight"]},
+    {"before": ["<C-j>"], "commands": ["cursorDown"]},
+    {"before": ["<C-k>"], "commands": ["cursorUp"]}
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {"before": ["<"], "commands": ["editor.action.outdentLines"]},
+    {"before": [">"], "commands": ["editor.action.indentLines"]},
+    {"before": ["J"], "commands": ["editor.action.moveLinesDownAction"]},
+    {"before": ["K"], "commands": ["editor.action.moveLinesUpAction"]},
+    {
+      "before": ["leader", "c", "c"],
+      "commands": ["editor.action.commentLine"]
+    }
+  ],
+  "workbench.colorTheme": "Vim Dark Hard"
 }
