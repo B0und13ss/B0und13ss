@@ -1,7 +1,10 @@
-$PSStyle.FileInfo.Directory = "`e[38;2;137;180;250m"
-Set-Alias -Name touch -Value "New-Item"
-cls
+# $PSStyle.FileInfo.Directory = "`e[38;2;137;180;250m"
+$PSStyle.FileInfo.Directory = "`e[38;2;69;133;136m"
+#oh-my-posh init pwsh --config "C:\Users\ian\AppData\Local\Programs\oh-my-posh\themes\tokyonight_storm.omp.json" | Invoke-Expression
 
+Set-Alias -Name touch -Value "New-Item"
+
+cls
 function prompt {
     $Location = (Get-Location).Path
     $HomeDir = echo $HOME
@@ -9,6 +12,7 @@ function prompt {
         $Location = "~"
     }
 
-    Write-Host -Object "`e[38;2;166;227;161mian@desktop`e[38;2;205;214;244m:`e[38;2;137;180;250m$Location`n`e[38;2;205;214;244m>" -NoNewLine -ForegroundColor White
+    # Write-Host -Object "`e[38;2;166;227;161mian@desktop`e[38;2;205;214;244m:`e[38;2;137;180;250m$Location`n`e[38;2;205;214;244m>" -NoNewLine -ForegroundColor White
+    Write-Host -Object "`e[38;2;184;187;38mian@desktop`e[38;2;235;219;178m:`e[38;2;69;133;136m$Location`n`e[38;2;235;219;178m>" -NoNewLine -ForegroundColor White
     Return ' '
 }
