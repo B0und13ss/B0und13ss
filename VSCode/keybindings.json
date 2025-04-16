@@ -2,11 +2,6 @@
 [
   // ! Sidebar Navigation
   {
-    "key": "ctrl+e",
-    "command": "editor.action.inlineSuggest.hide",
-    "when": "inlineSuggestionVisible"
-  },
-  {
     "key": "ctrl+0",
     "command": "workbench.action.focusSideBar"
   },
@@ -124,6 +119,11 @@
     "key": "ctrl+e",
     "command": "hideSuggestWidget",
     "when": "suggestWidgetVisible"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "editor.action.inlineSuggest.hide",
+    "when": "inlineSuggestionVisible"
   },
   // ! Swap Tabs that arent files using the same keybinds that files use
   {
