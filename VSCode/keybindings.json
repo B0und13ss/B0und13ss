@@ -1,29 +1,32 @@
-// Place your key bindings in this file to override the defaults
 [
-  // ! Sidebar Navigation
+  // ! VSCode Tree
   {
-    "key": "ctrl+0",
-    "command": "workbench.action.focusSideBar"
+    "key": "enter",
+    "command": "runCommands",
+    "args": {
+      "commands": ["explorer.openAndPassFocus", "workbench.action.closeSidebar"]
+    },
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsFolder && !inputFocus"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "workbench.action.closeSidebar",
+    "when": "sideBarVisible && editorFocus"
+  },
+  {
+    "key": "q",
+    "command": "workbench.action.closeSidebar",
+    "when": "sideBarFocus && !inputFocus"
   },
   {
     "key": "j",
     "command": "list.focusDown",
-    "when": "listFocus && !inputFocus && !treestickyScrollFocused"
+    "when": "filesExplorerFocus && !inputFocus"
   },
   {
     "key": "k",
     "command": "list.focusUp",
-    "when": "listFocus && !inputFocus && !treestickyScrollFocused"
-  },
-  {
-    "key": "l",
-    "command": "list.expand",
-    "when": "listFocus && treeElementCanExpand && !inputFocus && !treestickyScrollFocused || listFocus && treeElementHasChild && !inputFocus && !treestickyScrollFocused"
-  },
-  {
-    "key": "h",
-    "command": "list.collapse",
-    "when": "listFocus && treeElementCanExpand && !inputFocus && !treestickyScrollFocused || listFocus && treeElementHasChild && !inputFocus && !treestickyScrollFocused"
+    "when": "filesExplorerFocus && !inputFocus"
   },
   {
     "key": "a",
@@ -31,13 +34,18 @@
     "when": "filesExplorerFocus && !inputFocus"
   },
   {
-    "command": "renameFile",
-    "key": "r",
+    "key": "shift+a",
+    "command": "explorer.newFolder",
     "when": "filesExplorerFocus && !inputFocus"
   },
   {
-    "command": "deleteFile",
+    "key": "r",
+    "command": "renameFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
     "key": "d",
+    "command": "deleteFile",
     "when": "filesExplorerFocus && !inputFocus"
   },
   {
@@ -51,18 +59,13 @@
     "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
   },
   {
-    "key": "p",
+    "key": "y",
     "command": "filesExplorer.paste",
     "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
   },
   {
-    "key": "g y",
-    "command": "copyFilePath",
-    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-  },
-  {
-    "key": "Y",
-    "command": "copyRelativeFilePath",
+    "key": "p",
+    "command": "filesExplorer.paste",
     "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
   },
   // ! File Navigation
@@ -74,14 +77,10 @@
     "key": "alt+o f",
     "command": "workbench.action.files.openFile"
   },
-  {
-    "key": "alt+o n",
-    "command": "workbench.action.files.newUntitledFile"
-  },
   // ! Terminals navigation
   {
     "key": "ctrl+9",
-    "command": "workbench.action.focusPanel"
+    "command": "workbench.action.togglePanel"
   },
   // ! Quick Open Navigation
   {
@@ -105,31 +104,32 @@
     "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode' && !inQuickOpen"
   },
   // ! Hide autocompletions
-  {
-    "key": "ctrl+e",
-    "command": "extension.vim_ctrl+e",
-    "when": "editorTextFocus && vim.active && vim.use<C-e> && !inDebugRepl && !inQuickOpen && !inlineSuggestionVisible && !suggestWidgetVisible"
-  },
-  {
-    "key": "ctrl+e",
-    "command": "workbench.action.closeQuickOpen",
-    "when": "inQuickOpen"
-  },
-  {
-    "key": "ctrl+e",
-    "command": "hideSuggestWidget",
-    "when": "suggestWidgetVisible"
-  },
-  {
-    "key": "ctrl+e",
-    "command": "editor.action.inlineSuggest.hide",
-    "when": "inlineSuggestionVisible"
-  },
+  //{
+  //  "key": "escape",
+  //  "command": "extension.vim_escape",
+  //  "when": "editorTextFocus && vim.active && !inDebugRepl && !inQuickOpen && !suggestWidgetVisible && !inlineSuggestionVisible"
+  //},
+  // {
+  //   "key": "ctrl+e",
+  //   "command": "extension.vim_ctrl+e",
+  //   "when": "editorTextFocus && vim.active && vim.use<C-e> && !inDebugRepl && !inQuickOpen && !inlineSuggestionVisible && !suggestWidgetVisible && !sideBarVisible"
+  // },
+  // {
+  //   "key": "ctrl+e",
+  //   "command": "workbench.action.closeQuickOpen",
+  //   "when": "inQuickOpen"
+  // },
+  // {
+  //   "key": "ctrl+e",
+  //   "command": "hideSuggestWidget",
+  //   "when": "suggestWidgetVisible"
+  // },
+  // {
+  //   "key": "ctrl+e",
+  //   "command": "editor.action.inlineSuggest.hide",
+  //   "when": "inlineSuggestionVisible"
+  // },
   // ! Swap Tabs that arent files using the same keybinds that files use
-  {
-    "key": "ctrl+1",
-    "command": "workbench.action.focusFirstEditorGroup"
-  },
   {
     "key": "shift+l",
     "command": "workbench.action.nextEditor",
@@ -142,8 +142,14 @@
   },
   // ! Close window using similar keybind as the vim motion
   {
-    "key": "alt+shift+q",
-    "command": "workbench.action.closeActiveEditor"
+    "key": "space q",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "!inputBoxFocus && !inputFocus"
+  },
+  {
+    "key": "space s f",
+    "command": "workbench.action.quickOpen",
+    "when": "!inputBoxFocus && !inputFocus"
   },
   // ! Code Runner
   {
@@ -163,10 +169,6 @@
   {
     "key": "ctrl+b",
     "command": "-workbench.action.toggleSidebarVisibility"
-  },
-  {
-    "key": "ctrl+e",
-    "command": "workbench.action.toggleSidebarVisibility"
   },
   {
     "key": "ctrl+e",
@@ -294,5 +296,18 @@
   {
     "key": "ctrl+0",
     "command": "-workbench.action.focusSideBar"
+  },
+  {
+    "key": "ctrl+y",
+    "command": "-redo"
+  },
+  {
+    "key": "escape",
+    "command": "-extension.vim_escape",
+    "when": "editorTextFocus && vim.active && !inDebugRepl"
+  },
+  {
+    "key": "ctrl+q",
+    "command": "-workbench.action.quit"
   }
 ]
