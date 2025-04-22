@@ -1,9 +1,0 @@
-Content Pack for Windows Dashboards and Reports
-config explorer app
-
-check port 8089 on tcpdump
-make sure 8089 is open
-Might have to remove the local deploy server file on the deployment client and re-init using the cli
-
-                            set deploy-poll <ip>:8089
-then splunk restart
