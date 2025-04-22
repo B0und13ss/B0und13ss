@@ -1,4 +1,25 @@
 [
+  // ! Insert mode keybinds
+  {
+    "key": "ctrl+h",
+    "command": "cursorLeft",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "cursorRight",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "cursorDown",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "cursorUp",
+    "when": "editorTextFocus"
+  },
   // ! VSCode Tree
   {
     "key": "enter",
@@ -73,72 +94,16 @@
     "key": "alt+o d",
     "command": "workbench.action.files.openFolder"
   },
-  {
-    "key": "alt+o f",
-    "command": "workbench.action.files.openFile"
-  },
   // ! Terminals navigation
   {
-    "key": "ctrl+9",
+    "key": "ctrl+t",
     "command": "workbench.action.togglePanel"
   },
-  // ! Quick Open Navigation
-  {
-    "key": "ctrl+n",
-    "command": "workbench.action.quickOpenSelectNext",
-    "when": "inQuickOpen"
-  },
-  {
-    "key": "ctrl+p",
-    "command": "workbench.action.quickOpenSelectPrevious",
-    "when": "inQuickOpen"
-  },
-  {
-    "key": "ctrl+n",
-    "command": "extension.vim_ctrl+n",
-    "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl || vim.active && vim.use<C-n> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-n> && !inDebugRepl && vim.mode == 'SearchInProgressMode' && !inQuickOpen"
-  },
-  {
-    "key": "ctrl+p",
-    "command": "extension.vim_ctrl+p",
-    "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode' && !inQuickOpen"
-  },
   // ! Hide autocompletions
-  //{
-  //  "key": "escape",
-  //  "command": "extension.vim_escape",
-  //  "when": "editorTextFocus && vim.active && !inDebugRepl && !inQuickOpen && !suggestWidgetVisible && !inlineSuggestionVisible"
-  //},
-  // {
-  //   "key": "ctrl+e",
-  //   "command": "extension.vim_ctrl+e",
-  //   "when": "editorTextFocus && vim.active && vim.use<C-e> && !inDebugRepl && !inQuickOpen && !inlineSuggestionVisible && !suggestWidgetVisible && !sideBarVisible"
-  // },
-  // {
-  //   "key": "ctrl+e",
-  //   "command": "workbench.action.closeQuickOpen",
-  //   "when": "inQuickOpen"
-  // },
-  // {
-  //   "key": "ctrl+e",
-  //   "command": "hideSuggestWidget",
-  //   "when": "suggestWidgetVisible"
-  // },
-  // {
-  //   "key": "ctrl+e",
-  //   "command": "editor.action.inlineSuggest.hide",
-  //   "when": "inlineSuggestionVisible"
-  // },
-  // ! Swap Tabs that arent files using the same keybinds that files use
   {
-    "key": "shift+l",
-    "command": "workbench.action.nextEditor",
-    "when": "!textInputFocus && !sideBarFocus && !panelFocus"
-  },
-  {
-    "key": "shift+h",
-    "command": "workbench.action.previousEditor",
-    "when": "!textInputFocus && !sideBarFocus  && !panelFocus"
+    "key": "escape",
+    "command": "vscode-neovim.escape",
+    "when": "editorTextFocus && neovim.init && neovim.mode != 'normal' && editorLangId not in 'neovim.editorLangIdExclusions' && !inQuickOpen && !suggestWidgetVisible && !inlineSuggestionVisible"
   },
   // ! Close window using similar keybind as the vim motion
   {
@@ -309,5 +274,10 @@
   {
     "key": "ctrl+q",
     "command": "-workbench.action.quit"
-  }
+  },
+  {
+    "key": "escape",
+    "command": "-vscode-neovim.escape",
+    "when": "editorTextFocus && neovim.init && neovim.mode != 'normal' && editorLangId not in 'neovim.editorLangIdExclusions'"
+  },
 ]
