@@ -137,6 +137,7 @@
     "scrollbar.shadow": "#00000000",
     "[Vim Dark Hard]": {
       "titleBar.border": "#3c383600",
+      "widget.border": "#3c3836",
       "panel.border": "#3c3836",
       "sideBar.border": "#3c3836",
       "statusBar.border": "#3c383600",
@@ -146,7 +147,7 @@
       "statusBarItem.remoteBackground": "#1d2021",
       "editorGroupHeader.noTabsBackground": "#1d2021",
       "tab.activeBorder": "#3c383600",
-      "editorGroupHeader.tabsBorder": "#3c383600"
+      "editorGroupHeader.tabsBorder": "#3c383600",
     }
   },
   // ! VSCode Vim
