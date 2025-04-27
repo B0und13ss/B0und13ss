@@ -198,7 +198,7 @@
     },
     {
       "before": ["leader", "d", "u"],
-      "commands": [""]
+      "commands": ["debug.openView"]
     },
     {
       "before": ["leader", "d", "w"],
@@ -253,5 +253,8 @@
       "before": ["leader", "c", "c"],
       "commands": ["editor.action.commentLine"]
     }
+  ],
+  "cSpell.userWords": [
+    "Dougherty"
   ]
 }
