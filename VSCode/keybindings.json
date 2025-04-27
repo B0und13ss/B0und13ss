@@ -98,6 +98,21 @@
   },
   // ! VSCode Tree
   {
+    "key": "e",
+    "command": "workbench.files.action.focusFilesExplorer",
+    "when": "sideBarFocus"
+  },
+  {
+    "key": "d",
+    "command": "debug.openView",
+    "when": "sideBarFocus"
+  },
+  {
+    "key": "x",
+    "command": "workbench.extensions.action.focusExtensionsView",
+    "when": "sideBarFocus"
+  },
+  {
     "key": "enter",
     "command": "runCommands",
     "args": {
@@ -126,7 +141,7 @@
   {
     "key": "q",
     "command": "workbench.action.closeSidebar",
-    "when": "sideBarFocus && !inputFocus"
+    "when": "filesExplorerFocus && !inputFocus"
   },
   {
     "key": "j",
@@ -154,7 +169,7 @@
     "when": "filesExplorerFocus && !inputFocus"
   },
   {
-    "key": "d",
+    "key": "shitf+d",
     "command": "deleteFile",
     "when": "filesExplorerFocus && !inputFocus"
   },
@@ -183,10 +198,78 @@
     "key": "alt+o d",
     "command": "workbench.action.files.openFolder"
   },
-  // ! Terminals navigation
+  // ! Panel Navigation
   {
-    "key": "ctrl+t",
-    "command": "workbench.action.togglePanel"
+    "key": "ctrl+w t",
+    "command": "workbench.action.focusPanel"
+  },
+  {
+    "key": "ctrl+w ctrl+t",
+    "command": "workbench.action.closePanel"
+  },
+  {
+    "key": "alt+h",
+    "command": "workbench.action.previousPanelView"
+  },
+  {
+    "key": "alt+l",
+    "command": "workbench.action.nextPanelView"
+  },
+  // ! TMUX Terminal
+  {
+    "key": "ctrl+s c",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+s n",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+s p",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+s ,",
+    "command": "workbench.action.terminal.rename",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+s shift+7",
+    "command": "workbench.action.terminal.killActiveTab",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+s x",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+s shift+5",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+s h",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+s l",
+    "command": "workbench.action.terminal.focusPreviousPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+s shift+h",
+    "command": "workbench.action.terminal.resizePaneLeft",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+s shift+l",
+    "command": "workbench.action.terminal.resizePaneRight",
+    "when": "terminalFocus"
   },
   // ! Removed Conflicting Keybindings
   {
@@ -324,5 +407,25 @@
   {
     "key": "ctrl+shift+h",
     "command": "-workbench.action.replaceInFiles"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "ctrl+shift+`",
+    "command": "-workbench.action.terminal.new",
+    "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+  },
+  {
+    "key": "ctrl+shift+5",
+    "command": "-workbench.action.terminal.split",
+    "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
+  },
+  {
+    "key": "delete",
+    "command": "-workbench.action.terminal.killActiveTab",
+    "when": "terminalHasBeenCreated && terminalTabsFocus || terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
   }
 ]
