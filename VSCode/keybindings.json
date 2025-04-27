@@ -100,17 +100,22 @@
   {
     "key": "e",
     "command": "workbench.files.action.focusFilesExplorer",
-    "when": "sideBarFocus"
+    "when": "sideBarFocus && !inputFocus"
+  },
+  {
+    "key": "g",
+    "command": "workbench.scm.focus",
+    "when": "sideBarFocus && !inputFocus"
   },
   {
     "key": "d",
     "command": "debug.openView",
-    "when": "sideBarFocus"
+    "when": "sideBarFocus && !inputFocus"
   },
   {
     "key": "x",
     "command": "workbench.extensions.action.focusExtensionsView",
-    "when": "sideBarFocus"
+    "when": "sideBarFocus && !inputFocus"
   },
   {
     "key": "enter",
@@ -134,9 +139,9 @@
     "when": "vim.mode == 'Normal'"
   },
   {
-    "key": "ctrl+w ctrl+e",
+    "key": "q",
     "command": "workbench.action.closeSidebar",
-    "when": "vim.mode == 'Normal'"
+    "when": "vim.mode == 'Normal' && sideBarVisible"
   },
   {
     "key": "q",
@@ -169,7 +174,7 @@
     "when": "filesExplorerFocus && !inputFocus"
   },
   {
-    "key": "shitf+d",
+    "key": "shift+d",
     "command": "deleteFile",
     "when": "filesExplorerFocus && !inputFocus"
   },
@@ -198,13 +203,17 @@
     "key": "alt+o d",
     "command": "workbench.action.files.openFolder"
   },
+  {
+    "key": "alt+o f",
+    "command": "workbench.action.files.openFile"
+  },
   // ! Panel Navigation
   {
-    "key": "ctrl+w t",
+    "key": "ctrl+w j",
     "command": "workbench.action.focusPanel"
   },
   {
-    "key": "ctrl+w ctrl+t",
+    "key": "ctrl+w ctrl+j",
     "command": "workbench.action.closePanel"
   },
   {
@@ -427,5 +436,10 @@
     "key": "delete",
     "command": "-workbench.action.terminal.killActiveTab",
     "when": "terminalHasBeenCreated && terminalTabsFocus || terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
+  },
+  {
+    "key": "ctrl+shift+x",
+    "command": "-workbench.view.extensions",
+    "when": "viewContainer.workbench.view.extensions.enabled"
   }
 ]
