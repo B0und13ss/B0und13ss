@@ -441,5 +441,9 @@
     "key": "ctrl+shift+x",
     "command": "-workbench.view.extensions",
     "when": "viewContainer.workbench.view.extensions.enabled"
+  },
+  {
+    "key": "ctrl+shift+w",
+    "command": "-workbench.action.closeWindow"
   }
 ]
