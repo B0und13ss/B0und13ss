@@ -136,7 +136,7 @@
   {
     "key": "ctrl+w e",
     "command": "workbench.files.action.focusFilesExplorer",
-    "when": "vim.mode == 'Normal'"
+    "when": "vim.mode == 'Normal' || !vim.active"
   },
   {
     "key": "q",
