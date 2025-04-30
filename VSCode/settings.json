@@ -1,32 +1,17 @@
 {
-  "breadcrumbs.enabled": false,
-  "chat.commandCenter.enabled": false,
-  "code-runner.runInTerminal": true,
-  "code-runner.clearPreviousOutput": true,
-  "code-runner.preserveFocus": false,
-  "code-runner.showExecutionMessage": false,
-  "code-runner.enableAppInsights": false,
-  "code-runner.executorMap": {
-    "javascript": "node",
-    "typescript": "ts-node",
-    "python": "python3"
-  },
+  "C_Cpp.clang_format_fallbackStyle": "Google",
   "C_Cpp_Runner.cStandard": "gnu23",
   "C_Cpp_Runner.cppStandard": "gnu++23",
-  "C_Cpp_Runner.useAddressSanitizer": true,
-  "C_Cpp_Runner.useUndefinedSanitizer": true,
-  "C_Cpp_Runner.useLeakSanitizer": true,
+  "C_Cpp_Runner.showCompilationTime": false,
+  "C_Cpp_Runner.useAddressSanitizer": false,
+  "C_Cpp_Runner.useLeakSanitizer": false,
   "C_Cpp_Runner.useLinkTimeOptimization": true,
-  "C_Cpp.clang_format_fallbackStyle": "Google",
+  "C_Cpp_Runner.useUndefinedSanitizer": false,
+  "breadcrumbs.enabled": false,
+  "chat.commandCenter.enabled": false,
   "debug.showInlineBreakpointCandidates": false,
-  "errorLens.messageBackgroundMode": "message",
-  "errorLens.enabledDiagnosticLevels": ["error", "info", "warning"],
   "editor.codeLens": false,
-  "editor.autoClosingBrackets": "never",
-  "editor.autoClosingComments": "never",
-  "editor.autoClosingQuotes": "never",
-  "editor.cursorBlinking": "blink",
-  "editor.cursorStyle": "line-thin",
+  "editor.colorDecorators": false,
   "editor.cursorSurroundingLines": 10,
   "editor.fontFamily": "JetBrainsMonoNL NFM SemiBold",
   "editor.fontLigatures": false,
@@ -37,23 +22,27 @@
   "editor.lineNumbers": "relative",
   "editor.linkedEditing": true,
   "editor.minimap.enabled": false,
+  "editor.occurrencesHighlight": "off",
   "editor.overviewRulerBorder": false,
-  "editor.colorDecorators": false,
   "editor.renderLineHighlight": "none",
   "editor.scrollbar.horizontal": "hidden",
   "editor.scrollbar.horizontalScrollbarSize": 0,
   "editor.scrollbar.vertical": "hidden",
   "editor.scrollbar.verticalScrollbarSize": 0,
+  "editor.selectionHighlight": false,
   "editor.showFoldingControls": "never",
   "editor.stickyScroll.enabled": false,
   "editor.suggest.insertMode": "replace",
   "editor.tabSize": 2,
   "editor.wordWrap": "off",
+  "errorLens.enabledDiagnosticLevels": ["error", "info", "warning"],
+  "errorLens.messageBackgroundMode": "message",
   "explorer.compactFolders": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "extensions.ignoreRecommendations": true,
-  "files.dialog.defaultPath": "C:\\Users\\ian\\Code\\",
+  "files.dialog.defaultPath": "C:\\Users\\ian\\Code\\development",
+  "terminal.integrated.cwd": "C:\\Users\\ian\\Code\\development",
   "files.insertFinalNewline": true,
   "files.simpleDialog.enable": true,
   "files.trimTrailingWhitespace": true,
@@ -61,23 +50,23 @@
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "never",
-  "terminal.integrated.defaultLocation": "view",
+  "keyboard.dispatch": "keyCode",
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.port": 8080,
-  "vsicons.presets.hideExplorerArrows": true,
   "security.workspace.trust.untrustedFiles": "open",
   "terminal.integrated.copyOnSelection": true,
-  "terminal.integrated.focusAfterRun": "terminal",
-  "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.defaultLocation": "view",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "terminal.integrated.focusAfterRun": "terminal",
   "terminal.integrated.fontSize": 16,
-  "terminal.integrated.lineHeight": 1,
   "terminal.integrated.gpuAcceleration": "on",
+  "terminal.integrated.lineHeight": 1,
+  "terminal.integrated.scrollback": 10000,
   "terminal.integrated.tabStopWidth": 2,
   "terminal.integrated.tabs.enabled": false,
-  "window.titleBarStyle": "custom",
   "vsicons.dontShowNewVersionMessage": true,
+  "vsicons.presets.hideExplorerArrows": true,
   "window.commandCenter": false,
   "window.customMenuBarAltFocus": false,
   "window.density.editorTabHeight": "compact",
@@ -86,31 +75,41 @@
   "window.newWindowProfile": "Default",
   "window.restoreWindows": "none",
   "window.title": "${dirty}${activeEditorShort}",
-  "workbench.layoutControl.enabled": false,
-  "workbench.editor.revealIfOpen": true,
-  "workbench.colorTheme": "Vim Dark Hard",
-  "workbench.panel.defaultLocation": "right",
+  "window.titleBarStyle": "custom",
+  "workbench.activityBar.location": "hidden",
+  "workbench.colorTheme": "Gruvbox Material Dark",
   "workbench.editor.editorActionsLocation": "hidden",
   "workbench.editor.empty.hint": "hidden",
   "workbench.editor.enablePreview": false,
+  "workbench.editor.revealIfOpen": true,
   "workbench.editor.showTabs": "none",
-  "workbench.activityBar.location": "hidden",
+  "workbench.editor.tabActionCloseVisibility": false,
   "workbench.iconTheme": "vscode-icons",
+  "workbench.layoutControl.enabled": false,
+  "workbench.panel.defaultLocation": "bottom",
   "workbench.panel.opensMaximized": "preserve",
   "workbench.productIconTheme": "fluent-icons",
   "workbench.settings.editor": "json",
   "workbench.sideBar.location": "left",
-  "workbench.startupEditor": "terminal",
+  "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
   "workbench.tree.enableStickyScroll": false,
   "workbench.tree.indent": 24,
   "workbench.tree.renderIndentGuides": "none",
-  "keyboard.dispatch": "keyCode",
+  // ! Performance
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
-  "[markdown]": {
-    "files.trimTrailingWhitespace": false
+  // ! Code Runner
+  "code-runner.runInTerminal": true,
+  "code-runner.clearPreviousOutput": true,
+  "code-runner.preserveFocus": false,
+  "code-runner.showExecutionMessage": false,
+  "code-runner.enableAppInsights": false,
+  "code-runner.executorMap": {
+    "javascript": "node",
+    "typescript": "ts-node",
+    "python": "python3"
   },
   // ! Prettier
   "prettier.printWidth": 180,
@@ -125,6 +124,9 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
   "[c]": {
     "editor.defaultFormatter": "ms-vscode.cpptools"
   },
@@ -132,22 +134,25 @@
     "editor.defaultFormatter": "ms-vscode.cpptools"
   },
   // ! Custom Appearances
+  "gruvboxMaterial.darkPalette": "original",
   "custom-ui-style.font.sansSerif": "Inter",
+  "gruvboxMaterial.darkContrast": "hard",
   "workbench.colorCustomizations": {
     "scrollbar.shadow": "#00000000",
-    "[Vim Dark Hard]": {
-      "titleBar.border": "#3c383600",
+    "[Gruvbox Material Dark]": {
+      "titleBar.border": "#3c3836",
       "widget.border": "#3c3836",
+      "editorGroup.border": "#3c3836",
       "panel.border": "#3c3836",
       "sideBar.border": "#3c3836",
-      "statusBar.border": "#3c383600",
+      "statusBar.border": "#3c3836",
       "statusBar.noFolderBorder": "#3c383600",
       "statusBar.debuggingBackground": "#1d2021",
       "statusBar.debuggingForeground": "#ebdbb2",
       "statusBarItem.remoteBackground": "#1d2021",
       "editorGroupHeader.noTabsBackground": "#1d2021",
       "tab.activeBorder": "#3c383600",
-      "editorGroupHeader.tabsBorder": "#3c383600",
+      "editorGroupHeader.tabsBorder": "#3c383600"
     }
   },
   // ! VSCode Vim
@@ -163,14 +168,49 @@
   "vim.highlightedyank.duration": 100,
   "vim.normalModeKeyBindingsNonRecursive": [
     // ! no highlihgts
-    {"before": ["<Escape>"], "commands": [":noh"]},
+    {
+      "before": ["<Escape>"],
+      "commands": [":noh"]
+    },
     // ! file modification
-    {"before": ["leader", "w"], "commands": [":w!"]},
-    {"before": ["leader", "q"], "commands": [":q"]},
-    {"before": ["leader", "x"], "commands": [":x!"]},
+    {
+      "before": ["leader", "w"],
+      "commands": [":w!"]
+    },
+    {
+      "before": ["leader", "q"],
+      "commands": [":q"]
+    },
+    {
+      "before": ["leader", "x"],
+      "commands": [":x!"]
+    },
     // ! tab navigations
-    {"before": ["<S-h>"], "commands": [":tabp"]},
-    {"before": ["<S-l>"], "commands": [":tabn"]},
+    {
+      "before": ["<S-h>"],
+      "commands": [":tabp"]
+    },
+    {
+      "before": ["<S-l>"],
+      "commands": [":tabn"]
+    },
+    // ! page navigation
+    {
+      "before": ["<C-d>"],
+      "after": ["<C-d>", "z", "z"]
+    },
+    {
+      "before": ["<C-u>"],
+      "after": ["<C-u>", "z", "z"]
+    },
+    {
+      "before": ["<C-f>"],
+      "after": ["<C-f>", "z", "z"]
+    },
+    {
+      "before": ["<C-b>"],
+      "after": ["<C-b>", "z", "z"]
+    },
     // ! fzf search
     {
       "before": ["leader", "/"],
@@ -179,7 +219,7 @@
     // ! side bar
     {
       "before": ["leader", "e"],
-      "commands": ["workbench.action.focusSideBar"]
+      "commands": ["workbench.files.action.focusFilesExplorer"]
     },
     // ! comment lines
     {
@@ -191,13 +231,60 @@
       "before": ["leader", "c", "a"],
       "commands": ["editor.action.quickFix"]
     },
+    // ! Harpoon
+    {
+      "before": ["leader", "h", "o"],
+      "commands": ["vscode-harpoon.editorQuickPick"]
+    },
+    {
+      "before": ["leader", "h", "a"],
+      "commands": ["vscode-harpoon.addEditor"]
+    },
+    {
+      "before": ["leader", "h", "e"],
+      "commands": ["vscode-harpoon.editEditors"]
+    },
+    {
+      "before": ["leader", "h", "p"],
+      "commands": ["vscode-harpoon.gotoPreviousHarpoonEditor"]
+    },
+    {
+      "before": ["leader", "h", "1"],
+      "commands": ["vscode-harpoon.gotoEditor1"]
+    },
+    {
+      "before": ["leader", "h", "2"],
+      "commands": ["vscode-harpoon.gotoEditor2"]
+    },
+    {
+      "before": ["leader", "h", "3"],
+      "commands": ["vscode-harpoon.gotoEditor3"]
+    },
+    {
+      "before": ["leader", "h", "4"],
+      "commands": ["vscode-harpoon.gotoEditor4"]
+    },
+    {},
+    {
+      "before": ["leader", "h", "6"],
+      "commands": ["vscode-harpoon.gotoEditor6"]
+    },
+    {
+      "before": ["leader", "h", "7"],
+      "commands": ["vscode-harpoon.gotoEditor7"]
+    },
+    {},
+    {
+      "before": ["leader", "h", "9"],
+      "commands": ["vscode-harpoon.gotoEditor9"]
+    },
     // ! d
     {
       "before": ["leader", "d", "b"],
       "commands": ["editor.debug.action.toggleBreakpoint"]
     },
     {
-      "before": ["leader", "d", "u"],
+      "before": ["leader", "d", "o"],
       "commands": ["debug.openView"]
     },
     {
@@ -206,10 +293,21 @@
     },
     // ! f
     {
-      "before": ["leader", "s", "f"],
+      "before": ["leader", "o", "f"],
+      "commands": ["workbench.action.files.openFile"]
+    },
+    {
+      "before": ["leader", "o", "r"],
       "commands": ["workbench.action.quickOpen"]
     },
-    {"before": ["leader", "f", "f"], "commands": ["editor.action.formatDocument"]},
+    {
+      "before": ["leader", "o", "a"],
+      "commands": ["workbench.action.showAllEditors"]
+    },
+    {
+      "before": ["leader", "f", "f"],
+      "commands": ["editor.action.formatDocument"]
+    },
     // ! g
     {
       "before": ["leader", "g", "s"],
@@ -224,24 +322,17 @@
       "commands": ["editor.action.goToReferences"]
     },
     {
-      "before": ["leader", "g", "I"],
+      "before": ["leader", "g", "<S-i>"],
       "commands": ["editor.action.goToImplimentation"]
     },
     // ! p
-    {"before": ["leader", "p", "v"], "commands": [":vnew"]},
-    {"before": ["leader", "p", "h"], "commands": [":new"]},
-    // ! r
     {
-      "before": ["leader", "r", "s"],
-      "commands": ["code-runner.stop"]
+      "before": ["leader", "p", "v"],
+      "commands": [":vnew"]
     },
     {
-      "before": ["leader", "r", "r"],
-      "commands": ["code-runner.run"]
-    },
-    {
-      "before": ["leader", "r", "e"],
-      "commands": ["emulator.start"]
+      "before": ["leader", "p", "h"],
+      "commands": [":new"]
     }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
@@ -255,6 +346,15 @@
     }
   ],
   "cSpell.userWords": [
-    "Dougherty"
+    "Dougherty",
+    "Damuth",
+    "Realin"
+  ],
+  "cmake.additionalCompilerSearchDirs": [
+    "C:/msys64/mingw32/bin",
+    "C:/msys64/mingw64/bin",
+    "C:/msys64/clang32/bin",
+    "C:/msys64/clang64/bin",
+    "C:/msys64/clangarm64/bin"
   ]
 }
