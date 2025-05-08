@@ -1,8 +1,12 @@
-# $PSStyle.FileInfo.Directory = "`e[38;2;137;180;250m"
 $PSStyle.FileInfo.Directory = "`e[38;2;69;133;136m"
-#oh-my-posh init pwsh --config "C:\Users\ian\AppData\Local\Programs\oh-my-posh\themes\tokyonight_storm.omp.json" | Invoke-Expression
 
 Set-Alias -Name touch -Value "New-Item"
+function list{
+        eza -a1 --icons --sort=type
+}
+New-Alias -Name mb -Value mybuild
+Set-Alias -Name ls -Value list
+Set-Alias -Name vim -Value "nvim"
 
 cls
 function prompt {
@@ -12,7 +16,6 @@ function prompt {
         $Location = "~"
     }
 
-    # Write-Host -Object "`e[38;2;166;227;161mian@desktop`e[38;2;205;214;244m:`e[38;2;137;180;250m$Location`n`e[38;2;205;214;244m>" -NoNewLine -ForegroundColor White
     Write-Host -Object "`e[38;2;184;187;38mian@desktop`e[38;2;235;219;178m:`e[38;2;69;133;136m$Location`n`e[38;2;235;219;178m>" -NoNewLine -ForegroundColor White
     Return ' '
 }
