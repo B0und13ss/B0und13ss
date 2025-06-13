@@ -4,18 +4,27 @@ Set-Alias -Name touch -Value "New-Item"
 function list{
         eza -a1 --icons --sort=type
 }
-New-Alias -Name mb -Value mybuild
+#New-Alias -Name mb -Value mybuild
 Set-Alias -Name ls -Value list
 Set-Alias -Name vim -Value "nvim"
 
 cls
 function prompt {
-    $Location = (Get-Location).Path
-    $HomeDir = echo $HOME
-    if ($Location -eq $HomeDir) {
-        $Location = "~"
-    }
-
-    Write-Host -Object "`e[38;2;184;187;38mian@desktop`e[38;2;235;219;178m:`e[38;2;69;133;136m$Location`n`e[38;2;235;219;178m>" -NoNewLine -ForegroundColor White
-    Return ' '
+    Write-Host ("$env:USERNAME") -NoNewLine -ForegroundColor Green
+    Write-Host ("@") -NoNewLine -ForegroundColor White
+    Write-Host ("$env:COMPUTERNAME") -NoNewLine -ForegroundColor Green
+    Write-Host (":") -NoNewLine -ForegroundColor White
+    Write-Host ($(Get-Location)) -ForegroundColor Blue
+    Write-Host (">") -NoNewLine -ForegroundColor White
+    return " "
 }
+# function prompt {
+#     $Location = (Get-Location).Path
+#     $HomeDir = echo $HOME
+#     if ($Location -eq $HomeDir) {
+#         $Location = "~"
+#     }
+#
+#     Write-Host -Object "`e[38;2;184;187;38mian@desktop`e[38;2;235;219;178m:`e[38;2;69;133;136m$Location`n`e[38;2;235;219;178m>" -NoNewLine -ForegroundColor White
+#     Return ' '
+# }
