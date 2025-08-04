@@ -56,3 +56,56 @@ Set-Alias syno sync_notes
 Set-Alias puno push_notes
 
 Clear-Host
+
+####################################################################################
+POWERSHELL 5.X
+####################################################################################
+
+function global:prompt {
+    # ANSI Colors
+    $userColor = "`e[32m"      # Cyan
+    $pathColor = "`e[36m"      # Yellow
+    $gitColor  = "`e[35m"      # Magenta
+    $reset     = "`e[0m"
+
+    # Current user and directory
+    $user = $env:USERNAME
+    $cwd = (Get-Location).Path
+    $hostname = hostname
+
+    # Git info (basic)
+    $git = ""
+    if (Get-Command git -ErrorAction SilentlyContinue) {
+        try {
+            $branch = git rev-parse --abbrev-ref HEAD 2>$null
+            if ($branch) {
+                $status = git status --porcelain
+                $dirty = if ($status) { "*" } else { "" }
+                $git = "$gitColor($branch$dirty)$reset"
+            }
+        } catch { }
+    }
+
+    # Prompt string
+    return "${userColor}${user}${reset} on ${userColor}${hostname}${reset} at ${pathColor}${cwd}${reset} ${git}`n> "
+}
+
+$NOTES = #obsidian repo
+
+function push_notes {
+  Set-Location $NOTES
+  git add *
+  git commit -m "updating notes for the day"
+  git push
+}
+
+function sync_notes {
+  Set-Location $NOTES
+  git checkout main
+  git pull origin main
+}
+
+Set-Alias syno sync_notes
+Set-Alias puno push_notes
+
+Clear-Host
