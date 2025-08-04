@@ -1,30 +1,58 @@
-$PSStyle.FileInfo.Directory = "`e[38;2;69;133;136m"
+####################################################################################
+POWERSHELL 5.X
+####################################################################################
 
-Set-Alias -Name touch -Value "New-Item"
-function list{
-        eza -a1 --icons --sort=type
-}
-#New-Alias -Name mb -Value mybuild
-Set-Alias -Name ls -Value list
-Set-Alias -Name vim -Value "nvim"
+function global:prompt {
+    $userColor = "\e[32m"      # Cyan
+    $pathColor = "\e[36m"      # Yellow
+    $gitColor  = "\e[35m"      # Magenta
+    $reset     = "\e[0m"
 
-cls
-function prompt {
-    Write-Host ("$env:USERNAME") -NoNewLine -ForegroundColor Green
-    Write-Host ("@") -NoNewLine -ForegroundColor White
-    Write-Host ("$env:COMPUTERNAME") -NoNewLine -ForegroundColor Green
-    Write-Host (":") -NoNewLine -ForegroundColor White
-    Write-Host ($(Get-Location)) -ForegroundColor Blue
-    Write-Host (">") -NoNewLine -ForegroundColor White
+    $user = $env:USERNAME
+    $cwd = (Get-Location).Path
+
+    $git = ""
+    if (Get-Command git -ErrorAction SilentlyContinue) {
+        try {
+            $branch = git rev-parse --abbrev-ref HEAD 2>$null
+            if ($branch) {
+                $status = git status --porcelain
+                $dirty = if ($status) { "*" } else { "" }
+                $git = "$gitColor($branch$dirty)$reset"
+            }
+        } catch { }
+    }
+
+    $origColor = $Host.UI.RawUI.ForegroundColor
+    Write-Host $env:USERNAME -NoNewline -ForegroundColor Cyan
+    $Host.UI.RawUI.ForegroundColor = $origColor
+    Write-Host " on " -NoNewline
+    Write-Host hostname -NoNewline -ForegroundColor Cyan
+    $Host.UI.RawUI.ForegroundColor = $origColor
+    Write-Host " at " -NoNewline
+    Write-Host (Get-Location).Path -NoNewline -ForegroundColor Blue
+    Write-Host "`n> " -NoNewline
+    $Host.UI.RawUI.ForegroundColor = $origColor
     return " "
+
 }
-# function prompt {
-#     $Location = (Get-Location).Path
-#     $HomeDir = echo $HOME
-#     if ($Location -eq $HomeDir) {
-#         $Location = "~"
-#     }
-#
-#     Write-Host -Object "`e[38;2;184;187;38mian@desktop`e[38;2;235;219;178m:`e[38;2;69;133;136m$Location`n`e[38;2;235;219;178m>" -NoNewLine -ForegroundColor White
-#     Return ' '
-# }
+
+$NOTES = #obsidian repo
+
+function push_notes {
+  Set-Location $NOTES
+  git add *
+  git commit -m "updating notes for the day"
+  git push
+}
+
+function sync_notes {
+  Set-Location $NOTES
+  git checkout main
+  git pull origin main
+}
+
+Set-Alias syno sync_notes
+Set-Alias puno push_notes
+
+Clear-Host
