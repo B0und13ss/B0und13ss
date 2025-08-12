@@ -1,0 +1,185 @@
+{
+  "breadcrumbs.enabled": false,
+  "chat.commandCenter.enabled": false,
+  "code-runner.runInTerminal": true,
+  "code-runner.clearPreviousOutput": true,
+  "code-runner.preserveFocus": false,
+  "code-runner.showExecutionMessage": false,
+  "code-runner.enableAppInsights": false,
+  "code-runner.executorMap": {
+    "javascript": "node",
+    "typescript": "ts-node",
+    "python": "python3"
+  },
+  "C_Cpp_Runner.cStandard": "gnu23",
+  "C_Cpp_Runner.cppStandard": "gnu++23",
+  "C_Cpp_Runner.useAddressSanitizer": true,
+  "C_Cpp_Runner.useUndefinedSanitizer": true,
+  "C_Cpp_Runner.useLeakSanitizer": true,
+  "C_Cpp_Runner.useLinkTimeOptimization": true,
+  "C_Cpp.clang_format_fallbackStyle": "Visual Studio",
+  "debug.showInlineBreakpointCandidates": false,
+  "errorLens.messageBackgroundMode": "message",
+  "errorLens.enabledDiagnosticLevels": ["error", "info", "warning"],
+  "editor.codeLens": false,
+  "editor.autoClosingBrackets": "never",
+  "editor.autoClosingComments": "never",
+  "editor.autoClosingQuotes": "never",
+  "editor.cursorBlinking": "blink",
+  "editor.cursorStyle": "line-thin",
+  "editor.cursorSurroundingLines": 10,
+  "editor.fontFamily": "JetBrainsMonoNL NFM SemiBold",
+  "editor.fontLigatures": false,
+  "editor.fontSize": 17,
+  "editor.guides.indentation": false,
+  "editor.lightbulb.enabled": "off",
+  "editor.lineHeight": 1.45,
+  "editor.lineNumbers": "relative",
+  "editor.linkedEditing": true,
+  "editor.minimap.enabled": false,
+  "editor.overviewRulerBorder": false,
+  "editor.colorDecorators": false,
+  "editor.renderLineHighlight": "none",
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.horizontalScrollbarSize": 0,
+  "editor.scrollbar.vertical": "hidden",
+  "editor.scrollbar.verticalScrollbarSize": 0,
+  "editor.showFoldingControls": "never",
+  "editor.stickyScroll.enabled": false,
+  "editor.suggest.insertMode": "replace",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "off",
+  "explorer.compactFolders": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "extensions.ignoreRecommendations": true,
+  "files.dialog.defaultPath": "/home/ian/Development/",
+  "files.insertFinalNewline": true,
+  "files.simpleDialog.enable": true,
+  "files.trimTrailingWhitespace": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "never",
+  "terminal.integrated.defaultLocation": "view",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.port": 8080,
+  "vsicons.presets.hideExplorerArrows": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.focusAfterRun": "terminal",
+  "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.lineHeight": 1,
+  "terminal.integrated.gpuAcceleration": "on",
+  "terminal.integrated.tabStopWidth": 2,
+  "terminal.integrated.tabs.enabled": false,
+  "window.titleBarStyle": "native",
+  "vsicons.dontShowNewVersionMessage": true,
+  "window.commandCenter": false,
+  "window.customMenuBarAltFocus": false,
+  "window.density.editorTabHeight": "compact",
+  "window.enableMenuBarMnemonics": false,
+  "window.menuBarVisibility": "hidden",
+  "window.newWindowProfile": "Default",
+  "window.restoreWindows": "none",
+  "window.title": "NeoCode",
+  "workbench.layoutControl.enabled": false,
+  "workbench.editor.revealIfOpen": true,
+  "workbench.colorTheme": "Vim Dark Hard",
+  "workbench.panel.defaultLocation": "bottom",
+  "workbench.editor.editorActionsLocation": "hidden",
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.showTabs": "single",
+  "workbench.activityBar.location": "hidden",
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.panel.opensMaximized": "preserve",
+  "workbench.productIconTheme": "fluent-icons",
+  "workbench.settings.editor": "json",
+  "workbench.sideBar.location": "left",
+  "workbench.startupEditor": "terminal",
+  "workbench.tips.enabled": false,
+  "workbench.tree.enableStickyScroll": false,
+  "workbench.tree.indent": 24,
+  "workbench.tree.renderIndentGuides": "none",
+  "keyboard.dispatch": "keyCode",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
+  // ! Prettier
+  "prettier.printWidth": 180,
+  "prettier.tabWidth": 2,
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.bracketSpacing": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  // ! Custom Appearances
+  "custom-ui-style.font.sansSerif": "Inter",
+  "custom-ui-style.electron": {
+    "titleBarStyle": "hiddenInset",
+    "menuBarVisibility": false,
+    "frame": false
+  },
+  "custom-ui-style.stylesheet": {},
+  "workbench.colorCustomizations": {
+    "scrollbar.shadow": "#00000000",
+    "[Vim Dark Hard]": {
+      "titleBar.border": "#3c3836",
+      "panel.border": "#3c3836",
+      "statusBar.border": "#3c383600",
+      "statusBar.noFolderBorder": "#3c383600",
+      "sideBar.border": "#3c3836",
+      "statusBar.debuggingBackground": "#1d2021",
+      "statusBar.debuggingForeground": "#ebdbb2",
+      "statusBarItem.remoteBackground": "#1d2021",
+      "editorGroupHeader.noTabsBackground": "#1d2021",
+      "tab.activeBorder": "#3c383600",
+      "editorGroupHeader.tabsBorder": "#3c383600"
+    }
+  },
+  "nvim-ui-modes.colorCustomizations": {
+    "normal": {
+      "editorCursor.foreground": "#e9dbb7",
+      "statusBar.background": "#a89984",
+      "statusBar.foreground": "#282828"
+    },
+    "command": {
+      "editorCursor.foreground": "#e9dbb7",
+      "statusBar.background": "#7daea3",
+      "statusBar.foreground": "#282828"
+    },
+    "insert": {
+      "editorCursor.foreground": "#e9dbb7",
+      "statusBar.background": "#a9b665",
+      "statusBar.foreground": "#282828"
+    },
+    "visual": {
+      "editorCursor.foreground": "#e9dbb7",
+      "statusBar.background": "#ea6962",
+      "statusBar.foreground": "#282828"
+    },
+    "replace": {
+      "editorCursor.foreground": "#e9dbb7",
+      "statusBar.background": "#d8a657",
+      "statusBar.foreground": "#282828"
+    }
+  },
+  // ! VSCode Neovim
+  "vscode-neovim.neovimInitVimPaths.linux": "/home/ian/.config/nvim/vscode.lua",
+  "vscode-neovim.compositeTimeout": 500
+}
