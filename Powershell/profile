@@ -1,65 +1,4 @@
-####################################################################################
-POWERSHELL 5.X
-####################################################################################
-
-function global:prompt {
-    $userColor = "\e[32m"      # Cyan
-    $pathColor = "\e[36m"      # Yellow
-    $gitColor  = "\e[35m"      # Magenta
-    $reset     = "\e[0m"
-
-    $user = $env:USERNAME
-    $cwd = (Get-Location).Path
-
-    $git = ""
-    if (Get-Command git -ErrorAction SilentlyContinue) {
-        try {
-            $branch = git rev-parse --abbrev-ref HEAD 2>$null
-            if ($branch) {
-                $status = git status --porcelain
-                $dirty = if ($status) { "*" } else { "" }
-                $git = "$gitColor($branch$dirty)$reset"
-            }
-        } catch { }
-    }
-
-    $origColor = $Host.UI.RawUI.ForegroundColor
-    Write-Host $env:USERNAME -NoNewline -ForegroundColor Cyan
-    $Host.UI.RawUI.ForegroundColor = $origColor
-    Write-Host " on " -NoNewline
-    Write-Host hostname -NoNewline -ForegroundColor Cyan
-    $Host.UI.RawUI.ForegroundColor = $origColor
-    Write-Host " at " -NoNewline
-    Write-Host (Get-Location).Path -NoNewline -ForegroundColor Blue
-    Write-Host "`n> " -NoNewline
-    $Host.UI.RawUI.ForegroundColor = $origColor
-    return " "
-
-}
-
-$NOTES = #obsidian repo
-
-function push_notes {
-  Set-Location $NOTES
-  git add *
-  git commit -m "updating notes for the day"
-  git push
-}
-
-function sync_notes {
-  Set-Location $NOTES
-  git checkout main
-  git pull origin main
-}
-
-Set-Alias syno sync_notes
-Set-Alias puno push_notes
-
-Clear-Host
-
-####################################################################################
-POWERSHELL 7.X
-####################################################################################
+Remove-Item Alias:ls -Force
 
 function global:prompt {
     # ANSI Colors
@@ -70,7 +9,12 @@ function global:prompt {
 
     # Current user and directory
     $user = $env:USERNAME
-    $cwd = (Get-Location).Path
+
+    if ((Get-Location).Path -eq "C:\Users\ian") {
+        $cwd = "~"
+    } else {
+        $cwd = (Get-Location).Path
+    }
     $hostname = hostname
 
     # Git info (basic)
@@ -90,22 +34,6 @@ function global:prompt {
     return "${userColor}${user}${reset} on ${userColor}${hostname}${reset} at ${pathColor}${cwd}${reset} ${git}`n> "
 }
 
-$NOTES = #obsidian repo
-
-function push_notes {
-  Set-Location $NOTES
-  git add *
-  git commit -m "updating notes for the day"
-  git push
-}
-
-function sync_notes {
-  Set-Location $NOTES
-  git checkout main
-  git pull origin main
-}
-
-Set-Alias syno sync_notes
-Set-Alias puno push_notes
+function ls { eza -1 --icons=always $args }
 
 Clear-Host
