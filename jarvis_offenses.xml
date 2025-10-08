@@ -1,0 +1,328 @@
+<form version="1.1" theme="dark">
+  <label>Offenses</label>
+  <fieldset submitButton="false" autoRun="true"></fieldset>
+  <row>
+    <panel>
+      <title>Uncommon Techniques(s) (count &lt; 50 over Last 24 Hours)</title>
+      <chart>
+        <search>
+          <query>
+            index=jarvis
+            | stats count by mitre_technique_id 
+            | rename mitre_technique_id AS Technique
+            | where count &lt; 50
+            | sort -count
+          </query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.axisLabelsY.majorUnit">5</option>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.axisY.abbreviation">none</option>
+        <option name="charting.axisY.minimumNumber">1</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.chart.showDataLabels">all</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.drilldown">none</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.placement">none</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+    <panel>
+      <title>Uncommon Catagory(s) (count &lt; 50 over Last 24 Hours)</title>
+      <chart>
+        <search>
+          <query>
+            index=jarvis
+            | stats count BY mitre_category
+            | rename mitre_category AS "Category"
+            | where count &lt; 50
+            | sort -count
+          </query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.axisLabelsY.majorUnit">5</option>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.axisY.abbreviation">none</option>
+        <option name="charting.axisY.minimumNumber">1</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.chart.showDataLabels">all</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.drilldown">none</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.placement">none</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+  </row>
+  <row depends="$alwaysHideCSSPanel$">
+    <panel>
+      <html>
+        <style>
+          #tableWithButton table th:nth-child(2),
+          #tableWithButton table td:nth-child(2) {
+                width: 1ch !important;
+          }
+          #tableWithButton table th:nth-child(3),
+          #tableWithButton table td:nth-child(3) {
+                width: 1ch !important;
+          }
+          #tableWithButton table th:nth-child(4),
+          #tableWithButton table td:nth-child(4) {
+                width: 1ch !important;
+          }
+          #tableWithButton table th:nth-child(6),
+          #tableWithButton table td:nth-child(6) {
+                width: 1ch !important;
+          }
+          #tableWithButton table th:nth-child(7),
+          #tableWithButton table td:nth-child(7) {
+                width: 1ch !important;
+          }
+          #tableWithButton table th:nth-child(8),
+          #tableWithButton table td:nth-child(8) {
+                width: 1ch !important;
+          }
+          #tableWithButton table th:nth-child(9),
+          #tableWithButton table td:nth-child(9) {
+                width: 1ch !important;
+          }
+          #tableWithButton table th:nth-child(10),
+          #tableWithButton table td:nth-child(10) {
+                width: 1ch !important;
+          }
+          #tableWithButton table tbody tr td{
+            cursor: default !important;
+            color: whitesmoke !important;
+          }
+          #tableWithButton table tbody tr td input.table-button{
+            width: 83px !important;
+            position: relative;
+            left: 30%;
+          }
+          #tableWithButton table td:nth-child(2),
+          #tableWithButton table td:nth-child(3),
+          #tableWithButton table td:nth-child(10) {
+                text-align: center !important;
+                font-weight: bold !important;
+          }
+          #tableWithButton table td{
+                vertical-align: middle !important; 
+          }
+          .dashboard-element-title {
+                text-align: center !important;
+                width: 100% !important;
+                padding: 0 !important;
+          }
+          #tableCounts-fieldset {
+                display: flex !important;
+                justify-content: center !important;
+          }
+          .input, .input-multiselect {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          }
+          .panel-title {
+	              text-align: center !important;
+    	          width: 100% !important;
+    	          padding: 10px 0 !important;
+          }
+          .dashboard-panel, .dashboardPanel---pages-dark---dev---1UN1T, .with-title{
+	              border-radius: 10px !important;
+          }
+          .panel-body, .dashboard-element-body{
+	              border-radius: 10px !important;
+    	          margin-bottom: 15px !important;
+          }
+          .dashboard-panel, .dashboardPanel---pages-dark---dev---1UN1T {
+                background: none !important;
+          }
+        </style>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel id="tableCounts">
+      <input type="time" token="alert_time" searchWhenChanged="true">
+        <label>Alert Range</label>
+        <default>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </default>
+      </input>
+      <input type="multiselect" token="search_name" searchWhenChanged="true">
+        <label>Target ID(s)</label>
+        <choice value="*">All</choice>
+        <default>*</default>
+        <valuePrefix>search_name="</valuePrefix>
+        <valueSuffix>"</valueSuffix>
+        <delimiter> </delimiter>
+        <fieldForLabel>search_name</fieldForLabel>
+        <fieldForValue>search_name</fieldForValue>
+        <search>
+          <query>
+            `jarvis_index` 
+            | stats count by search_name
+            | sort -count
+          </query>
+          <earliest>$alert_time.earliest$</earliest>
+          <latest>$alert_time.latest$</latest>
+        </search>
+      </input>
+      <input type="multiselect" token="orig_index" searchWhenChanged="true">
+        <label>Target Index(s)</label>
+        <choice value="*">All</choice>
+        <default>*</default>
+        <valuePrefix>orig_index="</valuePrefix>
+        <valueSuffix>"</valueSuffix>
+        <delimiter> </delimiter>
+        <fieldForLabel>orig_index</fieldForLabel>
+        <fieldForValue>orig_index</fieldForValue>
+        <search>
+          <query>
+            `jarvis_index` 
+            | stats dc by orig_index
+            | table orig_index
+          </query>
+          <earliest>$alert_time.earliest$</earliest>
+          <latest>$alert_time.latest$</latest>
+        </search>
+      </input>
+      <input type="multiselect" token="mitre_category" searchWhenChanged="true">
+        <label>Target Category(s)</label>
+        <choice value="*">All</choice>
+        <default>*</default>
+        <valuePrefix>mitre_category="</valuePrefix>
+        <valueSuffix>"</valueSuffix>
+        <delimiter> </delimiter>
+        <fieldForLabel>mitre_category</fieldForLabel>
+        <fieldForValue>mitre_category</fieldForValue>
+        <search>
+          <query>
+            `jarvis_index` 
+            | stats dc by mitre_category
+            | table mitre_category
+          </query>
+          <earliest>$alert_time.earliest$</earliest>
+          <latest>$alert_time.latest$</latest>
+        </search>
+      </input>
+      <single>
+        <title>Alert(s)</title>
+        <search>
+          <query>
+            index=jarvis
+            | stats count
+          </query>
+          <earliest>$alert_time.earliest$</earliest>
+          <latest>$alert_time.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">77</option>
+      </single>
+      <single>
+        <title>Technique(s)</title>
+        <search>
+          <query>
+            index=jarvis
+            | stats dc(mitre_technique_id)
+          </query>
+          <earliest>$alert_time.earliest$</earliest>
+          <latest>$alert_time.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">77</option>
+        <option name="refresh.display">progressbar</option>
+      </single>
+      <single>
+        <title>Category(s)</title>
+        <search>
+          <query>
+            index=jarvis
+            | stats dc(mitre_category)
+          </query>
+          <earliest>$alert_time.earliest$</earliest>
+          <latest>$alert_time.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">77</option>
+        <option name="refresh.display">progressbar</option>
+      </single>
+      <single>
+        <title>Index(s)</title>
+        <search>
+          <query>
+            index=jarvis
+            | stats dc(orig_index)
+          </query>
+          <earliest>$alert_time.earliest$</earliest>
+          <latest>$alert_time.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">77</option>
+        <option name="refresh.display">progressbar</option>
+      </single>
+      <table id="tableWithButton">
+        <search>
+          <query>
+            index=jarvis $search_name$ $orig_index$ $mitre_category$
+            | eval Time = strftime(_time, "%Y-%m-%d %H:%M:%S")
+            | eval Events="Events"
+            | eval Delete="Delete"
+            | eval Rule="Rule"
+            | eval orig_host = mvindex(orig_host, 0)
+            | eval orig_index = mvindex(orig_index, 0)
+            | eval URL="https://10.10.20.7:8000/en-US/manager/launcher/saved/searches?app=Arc_Reactor_app&amp;count=10&amp;offset=0&amp;itemType&amp;owner=jarvis.dashboard&amp;search=" + search_name
+            | rename event_uid AS UID orig_host AS Host orig_index AS Index search_name AS Alert mitre_category AS Category
+            | table Rule Events Time Alert Category UID Host Index Delete URL
+            | sort -Time
+          </query>
+          <earliest>$alert_time.earliest$</earliest>
+          <latest>$alert_time.latest$</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">true</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">false</option>
+        <format type="color" field="Delete">
+          <colorPalette type="map">{"Delete":#9E2520}</colorPalette>
+        </format>
+        <format type="color" field="Rule">
+          <colorPalette type="map">{"Rule":#118832}</colorPalette>
+        </format>
+        <format type="color" field="Events">
+          <colorPalette type="map">{"Events":#CBA700}</colorPalette>
+        </format>
+        <fields>["Rule","Events","Time","Alert", "Category","UID","Host","Index","Delete"]</fields>
+        <drilldown>
+          <condition field="Events">
+            <link target="_blank">search?q=index%3Djarvis%20OR%20index%3D$row.Index$%20AND%20event_uid%3D$row.UID$&amp;earliest=-24h@h&amp;latest=now</link>
+          </condition>
+          <condition field="Delete">
+            <link target="_blank">search?q=index%3Djarvis%20AND%20event_uid%3D$row.UID$|delete&amp;earliest=-24h@h&amp;latest=now</link>
+          </condition>
+          <condition field="Rule">
+            <link target="_blank">
+              <![CDATA[$row.URL|n$]]>
+            </link>
+          </condition>
+          <condition>
+            <!-- No Drilldown on Other Columns -->
+          </condition>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+</form>
