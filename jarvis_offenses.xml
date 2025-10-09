@@ -32,6 +32,23 @@
       </chart>
     </panel>
     <panel>
+      <title>Most Common MTAs</title>
+      <chart>
+        <search>
+          <query>index=jarvis
+| mvexpand apt
+| where isnotnull(apt) AND apt!=""
+| stats count by apt
+| sort -count</query>
+          <earliest>$alert_time.earliest$</earliest>
+          <latest>$alert_time.latest$</latest>
+        </search>
+        <option name="charting.chart">bar</option>
+        <option name="charting.drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+    <panel>
       <title>Uncommon Catagory(s) (count &lt; 50 over Last 24 Hours)</title>
       <chart>
         <search>
@@ -157,6 +174,23 @@
           <latest>now</latest>
         </default>
       </input>
+      <input type="multiselect" token="event_uid" searchWhenChanged="true">
+        <label>Target UID(s)</label>
+        <choice value="*">All</choice>
+        <default>*</default>
+        <valuePrefix>event_uid="</valuePrefix>
+        <valueSuffix>"</valueSuffix>
+        <delimiter> </delimiter>
+        <fieldForLabel>event_uid</fieldForLabel>
+        <fieldForValue>event_uid</fieldForValue>
+        <search>
+          <query>`jarvis_index` 
+            | stats count by event_uid
+            | sort -count</query>
+          <earliest>$alert_time.earliest$</earliest>
+          <latest>$alert_time.latest$</latest>
+        </search>
+      </input>
       <input type="multiselect" token="search_name" searchWhenChanged="true">
         <label>Target ID(s)</label>
         <choice value="*">All</choice>
@@ -271,8 +305,7 @@
       </single>
       <table id="tableWithButton">
         <search>
-          <query>
-            index=jarvis $search_name$ $orig_index$ $mitre_category$
+          <query>index=jarvis $search_name$ $orig_index$ $mitre_category$ $event_uid$
             | eval Time = strftime(_time, "%Y-%m-%d %H:%M:%S")
             | eval Events="Events"
             | eval Delete="Delete"
@@ -282,8 +315,7 @@
             | eval URL="https://10.10.20.7:8000/en-US/manager/launcher/saved/searches?app=Arc_Reactor_app&amp;count=10&amp;offset=0&amp;itemType&amp;owner=jarvis.dashboard&amp;search=" + search_name
             | rename event_uid AS UID orig_host AS Host orig_index AS Index search_name AS Alert mitre_category AS Category
             | table Rule Events Time Alert Category UID Host Index Delete URL
-            | sort -Time
-          </query>
+            | sort -Time</query>
           <earliest>$alert_time.earliest$</earliest>
           <latest>$alert_time.latest$</latest>
           <sampleRatio>1</sampleRatio>
@@ -305,10 +337,10 @@
         <format type="color" field="Events">
           <colorPalette type="map">{"Events":#CBA700}</colorPalette>
         </format>
-        <fields>["Rule","Events","Time","Alert", "Category","UID","Host","Index","Delete"]</fields>
+        <fields>["Rule","Events","Time","Alert","Category","UID","Host","Index","Delete"]</fields>
         <drilldown>
           <condition field="Events">
-            <link target="_blank">search?q=index%3Djarvis%20OR%20index%3D$row.Index$%20AND%20event_uid%3D$row.UID$&amp;earliest=-24h@h&amp;latest=now</link>
+            <link target="_blank">search?q=index%3D$row.Index$%20AND%20event_uid%3D$row.UID$%20%0A%7C%20append%20%0A%20%20%20%20%5B%7C%20rest%20/servicesNS/-/-/saved/searches%20splunk_server=local%20%0A%20%20%20%20%7C%20where%20title=%22$row.Alert$%22%0A%20%20%20%20%7C%20eval%20_raw%20=%20mvjoin(mvappend(%22TITLE:%22,%20title,%20%22%22,%20%22DESCRIPTION:%22%20,if(description=%22%22,%20%22NO%20DESCRIPTION%20FOUND%22,%20description),%20%22%22,%20%22RULE:%22,%20search),%20%22%0A%22)%0A%20%20%20%20%7C%20fields%20title,%20description,%20search%0A%20%20%20%20%20%20%20%20%5D&amp;earliest=-24h@h&amp;latest=now</link>
           </condition>
           <condition field="Delete">
             <link target="_blank">search?q=index%3Djarvis%20AND%20event_uid%3D$row.UID$|delete&amp;earliest=-24h@h&amp;latest=now</link>
